@@ -1,1 +1,9 @@
-<p>index works!</p>
+<h1 class="mb-4">Parties</h1>
+<div *ngIf="parties.length > 0; else showText">
+  <app-partie-item *ngFor="let partie of parties" [partie]="partie"></app-partie-item>
+</div>
+<ng-template #showText>
+  <div class="alert alert-dismissible alert-warning">
+    Aucune partie
+  </div>
+</ng-template>

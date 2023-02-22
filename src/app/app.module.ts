@@ -6,6 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
 import { PartieComponent } from './partie/partie.component';
+import { PartieItemComponent } from './partie/partie-item/partie-item.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { PartieComponent } from './partie/partie.component';
     HeaderComponent,
     IndexComponent,
     FooterComponent,
-    PartieComponent
+    PartieComponent,
+    PartieItemComponent
   ],
   imports: [
     BrowserModule,

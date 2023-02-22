@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Partie } from 'src/app/resources/partie';
 
 
 @Component({
@@ -9,5 +10,7 @@ import { Component } from '@angular/core';
 
 
 export class IndexComponent {
+
+  parties: Partie[] = [];
 
 }
