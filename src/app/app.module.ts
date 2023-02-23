@@ -7,6 +7,8 @@ import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
 import { PartieComponent } from './partie/partie.component';
 import { PartieItemComponent } from './partie/partie-item/partie-item.component';
+import { PartieAddingComponent } from './partie/partie-adding/partie-adding.component';
+import {FormsModule} from "@angular/forms";
 
 
 @NgModule({
@@ -16,12 +18,14 @@ import { PartieItemComponent } from './partie/partie-item/partie-item.component'
     IndexComponent,
     FooterComponent,
     PartieComponent,
-    PartieItemComponent
+    PartieItemComponent,
+    PartieAddingComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
