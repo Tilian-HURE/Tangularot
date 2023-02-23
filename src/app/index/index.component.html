@@ -1,8 +1,12 @@
-<h1 class="mb-3">Parties</h1>
-<a class="btn btn-lg btn-primary mb-4" type="button" routerLink="../nouvellePartie/">Ajouter une partie</a>
-<div *ngIf="parties.length > 0; else showText">
-  <app-partie-item *ngFor="let partie of parties" [partie]="partie"></app-partie-item>
+<div class="breadcrumb d-flex flex-row justify-content-between mb-4 p-2">
+  <h1 class="mb-0 pb-0">Parties</h1>
+  <a class="btn btn-lg btn-primary" type="button" routerLink="../nouvellePartie/">Ajouter une partie</a>
 </div>
-<ng-template #showText>
-  <p class="text-secondary">Aucune partie</p>
-</ng-template>
+<div>
+  <div *ngIf="parties.length > 0; else showText">
+    <app-partie-item *ngFor="let partie of parties" [partie]="partie"></app-partie-item>
+  </div>
+  <ng-template #showText>
+    <p class="text-secondary">Aucune partie</p>
+  </ng-template>
+</div>
