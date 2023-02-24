@@ -11,8 +11,7 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
 
-  title: string = 'tarot';
-  router: Router;
+  private router: Router;
 
   constructor(router: Router) {
     this.router = router;
@@ -21,7 +20,7 @@ export class AppComponent {
   /*
   Redirects towards the index route.
    */
-  ngOnInit(): void {
+  private ngOnInit(): void {
     this.router.navigate(['accueil/']);
   }
 

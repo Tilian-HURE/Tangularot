@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { IndexComponent } from './index/index.component';
-import { PartieAddingComponent } from './partie/partie-adding/partie-adding.component';
+import { PartyAddingComponent } from './party/party-adding/party-adding.component';
 
 
 const routes: Routes = [
   {path:'accueil', component:IndexComponent},
-  {path:'nouvellePartie', component:PartieAddingComponent}
+  {path:'nouvellePartie', component:PartyAddingComponent}
 ];
 
 @NgModule({

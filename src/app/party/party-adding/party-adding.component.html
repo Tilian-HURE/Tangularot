@@ -1,0 +1,16 @@
+<h1>Nouvelle partie</h1>
+<form #formulaire="ngForm" (ngSubmit)="onSubmit(formulaire)">
+  <fieldset>
+    <div class="form-group">
+      <label class="col-form-label" for="partieLabel">Libellé de la partie</label>
+      <input [(ngModel)]="partie.label" id="partieLabel" name="partieLabel" type="text" class="form-control" placeholder="Libellé de la partie" maxlength="30" required>
+      <label class="col-form-label" >Joueurs</label>
+      <input [(ngModel)]="partie.playersName.player1" name="player1Name" type="text" class="form-control" placeholder="Nom du joueur 1" maxlength="30" required>
+      <input [(ngModel)]="partie.playersName.player2" name="player2Name" type="text" class="form-control" placeholder="Nom du joueur 2" maxlength="30" required>
+      <input [(ngModel)]="partie.playersName.player3" name="player3Name" type="text" class="form-control" placeholder="Nom du joueur 3" maxlength="30" required>
+      <input [(ngModel)]="partie.playersName.player4" name="player4Name" type="text" class="form-control" placeholder="Nom du joueur 4" maxlength="30" required>
+    </div>
+    <button class="btn btn-success" type="submit" [disabled]="formulaire.invalid">Ajouter la partie</button>
+    <a routerLink="../accueil/" class="btn btn-warning">Annuler</a>
+  </fieldset>
+</form>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { Partie } from 'src/app/resources/partie';
+import {Component} from '@angular/core';
+import {Party, PartyStat} from 'src/app/resources/party';
 
 
 @Component({
@@ -11,6 +11,24 @@ import { Partie } from 'src/app/resources/partie';
 
 export class IndexComponent {
 
-  parties: Partie[] = [];
+  public parties: Party[] = [];
+
+  private getNbParties(partiesStat: PartyStat) {
+    let nbParties: number = 0;
+    this.parties.forEach(function (partie: Party) {
+      if (!partiesStat || partie.stat == partiesStat) {
+        nbParties++;
+      }
+    });
+    return nbParties;
+  }
+
+  public getNbInProgressParties() {
+    return this.getNbParties(PartyStat.IN_PROGRESS);
+  }
+
+  public getNbDoneParties() {
+    return this.getNbParties(PartyStat.DONE);
+  }
 
 }

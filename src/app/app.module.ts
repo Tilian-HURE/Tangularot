@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { IndexComponent } from './index/index.component';
 import { FooterComponent } from './footer/footer.component';
-import { PartieComponent } from './partie/partie.component';
-import { PartieItemComponent } from './partie/partie-item/partie-item.component';
-import { PartieAddingComponent } from './partie/partie-adding/partie-adding.component';
+import { PartyConsultingComponent } from './party/party-consulting/party-consulting.component';
+import { PartyItemComponent } from './party/party-item/party-item.component';
+import { PartyAddingComponent } from './party/party-adding/party-adding.component';
 import {FormsModule} from "@angular/forms";
 
 
@@ -17,9 +17,9 @@ import {FormsModule} from "@angular/forms";
     HeaderComponent,
     IndexComponent,
     FooterComponent,
-    PartieComponent,
-    PartieItemComponent,
-    PartieAddingComponent
+    PartyConsultingComponent,
+    PartyItemComponent,
+    PartyAddingComponent
   ],
     imports: [
         BrowserModule,

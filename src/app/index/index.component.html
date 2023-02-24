@@ -1,7 +1,6 @@
-<div class="breadcrumb d-flex flex-row justify-content-between mb-4 p-2">
-  <h1 class="mb-0 pb-0">Parties</h1>
-  <a class="btn btn-lg btn-primary" type="button" routerLink="../nouvellePartie/">Ajouter une partie</a>
-</div>
+<h1>Parties</h1>
+<p><strong>{{ getNbInProgressParties() }}</strong> en cour et <strong>{{ getNbDoneParties() }}</strong> terminée(s)</p>
+<a class="btn btn-lg btn-primary" type="button" routerLink="../nouvellePartie/">Ajouter une partie</a>
 <div>
   <div *ngIf="parties.length > 0; else showText">
     <app-partie-item *ngFor="let partie of parties" [partie]="partie"></app-partie-item>
