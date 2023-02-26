@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,17 +10,6 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
 
-  private router: Router;
-
-  constructor(router: Router) {
-    this.router = router;
-  }
-
-  /*
-  Redirects towards the index route.
-   */
-  private ngOnInit(): void {
-    this.router.navigate(['accueil/']);
-  }
+  constructor() {}
 
 }

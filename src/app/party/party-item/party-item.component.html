@@ -1,1 +1,23 @@
-<p>partie-item works! {{ partie.id }}</p>
+<div class="list-group-item flex-column align-items-start">
+  <div class="d-flex w-100 justify-content-between">
+    <h3 class="mb-0">{{ party.label }}</h3>
+    <small class="text-muted">TODO <!-- date dernière manche/nb de manches --></small>
+  </div>
+  <small>Date de début : <span class="text-muted">{{ party.startingDate }}</span>
+    <span *ngIf="party.state == 1">
+      - Date de fin : <span class="text-muted">{{ party.endingDate }}</span>
+    </span>
+  </small>
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <h6 class="mb-1">
+      <strong>Joueurs : </strong> {{ party.playersName.player1 }},
+      {{ party.playersName.player2 }},
+      {{ party.playersName.player3 }} et
+      {{ party.playersName.player4 }}
+    </h6>
+    <div>
+      <a type="button" class="btn btn-primary">{{ (party.state == 0 ? "Continuer" : "Consulter") }}</a>
+      <a type="button" class="btn btn-warning">Supprimer</a>
+    </div>
+  </div>
+</div>

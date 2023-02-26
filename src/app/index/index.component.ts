@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
-import {Party, PartyStat} from 'src/app/resources/party';
+import { Component } from '@angular/core';
+import { Party, PartyState } from 'src/app/resources/party';
+import { Observable } from 'rxjs';
+import { PartyService } from 'src/app/services/party.service';
 
 
 @Component({
@@ -11,24 +13,31 @@ import {Party, PartyStat} from 'src/app/resources/party';
 
 export class IndexComponent {
 
-  public parties: Party[] = [];
+  public parties!: Observable<Party[]>;
+  public nbParties = {"totalNbParties":0,
+                       "nbInProgressParties":0,
+                       "nbDoneParties":0}
 
-  private getNbParties(partiesStat: PartyStat) {
-    let nbParties: number = 0;
-    this.parties.forEach(function (partie: Party) {
-      if (!partiesStat || partie.stat == partiesStat) {
-        nbParties++;
-      }
-    });
-    return nbParties;
-  }
+  constructor(
+    private partyService: PartyService
+  ) {}
 
-  public getNbInProgressParties() {
-    return this.getNbParties(PartyStat.IN_PROGRESS);
-  }
-
-  public getNbDoneParties() {
-    return this.getNbParties(PartyStat.DONE);
+  /**
+   * Gets the observed parties from the JSON database
+   *  and sets the numbers of parties when initializing.
+   */
+  private ngOnInit(): void {
+    this.parties = this.partyService.getParties();
+    this.parties.subscribe(OP => (
+      OP.forEach((party: Party) => {
+        if (party.state == PartyState.IN_PROGRESS) {
+          this.nbParties.nbInProgressParties++;
+        } else {
+          this.nbParties.nbDoneParties++;
+        }
+        this.nbParties.totalNbParties++;
+      })
+    ));
   }
 
 }

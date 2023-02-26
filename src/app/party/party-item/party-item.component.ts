@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Party } from 'src/app/resources/party';
 
 
@@ -12,6 +12,6 @@ import { Party } from 'src/app/resources/party';
 export class PartyItemComponent {
 
   @Input()
-  public partie: Party = new Party();
+  public party: Party = new Party();
 
 }
