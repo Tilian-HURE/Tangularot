@@ -14,10 +14,7 @@ export class Party {
     public label: string = "",
     public startingDate: string = "",
     public endingDate: string | null = null,
-    public playersName = {"player1":"",
-                               "player2":"",
-                               "player3":"",
-                               "player4":""},
+    public playersName = {"player1":"", "player2":"", "player3":"", "player4":""},
     public rounds: Round[] = []
   ) {}
 

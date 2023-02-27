@@ -1,7 +1,10 @@
 <div class="list-group-item flex-column align-items-start">
-  <div class="d-flex w-100 justify-content-between">
-    <h3 class="mb-0">{{ party.label }}</h3>
-    <small class="text-muted">TODO <!-- date dernière manche/nb de manches --></small>
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <div class="d-flex align-items-center">
+      <h3 class="mb-0">{{ party.label }}</h3>
+      <h6 class="text-primary mb-0">{{ (party.state == 0 ? "EN COURS" : "TERMINÉE") }}</h6>
+    </div>
+    <small class="text-muted">{{ lastRoundTimeLabel }}</small>
   </div>
   <small>Date de début : <span class="text-muted">{{ party.startingDate }}</span>
     <span *ngIf="party.state == 1">
@@ -16,8 +19,8 @@
       {{ party.playersName.player4 }}
     </h6>
     <div>
-      <a type="button" class="btn btn-primary">{{ (party.state == 0 ? "Continuer" : "Consulter") }}</a>
-      <a type="button" class="btn btn-warning">Supprimer</a>
+      <button type="button" class="btn btn-primary" routerLink="partie/{{ party.id }}">{{ (party.state == 0 ? "Continuer" : "Consulter") }}</button>
+      <button type="button" class="btn btn-warning">Supprimer</button>
     </div>
   </div>
 </div>

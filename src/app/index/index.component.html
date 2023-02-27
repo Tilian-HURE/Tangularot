@@ -6,7 +6,7 @@
   en cour et <strong>{{ nbParties.nbDoneParties }}
   </strong> terminée(s)
 </p>
-<a class="btn btn-lg btn-secondary" type="button" routerLink="/partie/nouvelle">Ajouter une partie</a>
+<button class="btn btn-lg btn-secondary" type="button" routerLink="/partie/nouvelle">Ajouter une partie</button>
 <div>
   <div *ngIf="nbParties.totalNbParties > 0; else showText" class="list-group">
     <app-partie-item *ngFor="let partie of parties|async" [party]="partie"></app-partie-item>

@@ -1,0 +1,17 @@
+<div class="list-group-item flex-column align-items-start">
+  <div class="d-flex w-100">
+    <h3 class="mb-0">Manche n°{{ round.number }}</h3>
+    <p class="text-primary" *ngIf="round.bet == 1">Petite</p>
+    <p class="text-primary" *ngIf="round.bet == 2">Garde</p>
+    <p class="text-primary" *ngIf="round.bet == 4">Garde sans le chien</p>
+    <p class="text-primary" *ngIf="round.bet == 6">Garde contre le chien</p>
+  </div>
+  <small>Date : <span class="text-muted">{{ round.date }}</span></small>
+  <strong *ngIf="round.number == 4">Scores finaux</strong>
+  <h6><strong>Preneur : </strong>{{ round.bettingPlayer.name }}</h6>
+  <div class="d-flex w-100 justify-content-between align-items-center">
+    <div>
+      <button type="button" class="btn btn-primary">Voir plus</button> <!-- TODO -->
+    </div>
+  </div>
+</div>

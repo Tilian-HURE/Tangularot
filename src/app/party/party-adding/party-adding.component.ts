@@ -39,9 +39,8 @@ export class PartyAddingComponent {
   public onSubmit(partyAddingForm: NgForm): void {
     if (partyAddingForm.valid) {
       this.party.startingDate = Tools.getCurrentStringDate();
-      let observableAction = this.partyService.addParty(this.party);
-      observableAction.subscribe({
-        next: x => this.router.navigateByUrl(""),
+      this.partyService.addParty(this.party).subscribe({
+        next: success => this.router.navigateByUrl(""),
         error: e => console.log("Error when adding data to the database:\n"+e)
       });
     }

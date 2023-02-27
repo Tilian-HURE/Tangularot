@@ -1,0 +1,55 @@
+<h1>Manche n°{{ round.number }}</h1>
+<form #roundContinuingForm="ngForm" (ngSubmit)="onSubmit(roundContinuingForm)">
+  <fieldset>
+    <div class="form-group">
+      <label class="form-label mt-4">Joueur preneur</label> <br>
+      <div class="form-check" *ngIf="!playerWhoBet.player1">
+        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player1Betting" value="player1" required>
+        <label class="form-check-label" for="player1Betting">{{ party.playersName.player1 }}</label>
+      </div>
+      <div class="form-check" *ngIf="!playerWhoBet.player2">
+        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player2Betting" value="player2">
+        <label class="form-check-label" for="player2Betting">{{ party.playersName.player2 }}</label>
+      </div>
+      <div class="form-check" *ngIf="!playerWhoBet.player3">
+        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player3Betting" value="player3">
+        <label class="form-check-label" for="player3Betting">{{ party.playersName.player3 }}</label>
+      </div>
+      <div class="form-check" *ngIf="!playerWhoBet.player4">
+        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player4Betting" value="player4">
+        <label class="form-check-label" for="player4Betting">{{ party.playersName.player4 }}</label>
+      </div>
+    </div> <br>
+    <div class="form-group">
+      <label for="betSelect" class="form-label mt-4">Type de pari</label>
+      <select [(ngModel)]="round.bet" class="form-select" name="betSelect" id="betSelect" required>
+        <option value="1" selected>Petite</option>
+        <option value="2">Garde</option>
+        <option value="4">Garde sans le chien</option>
+        <option value="6">Garde contre le chien</option>
+      </select>
+    </div> <br>
+    <div class="form-group">
+      <label class="col-form-label mt-4" for="bettingPlayerScoreInput">Score du preneur</label>
+      <input [(ngModel)]="bettingPlayerGivenScore" type="text" class="form-control" placeholder="Score du preneur" name="bettingPlayerScoreInput" id="bettingPlayerScoreInput" pattern="^(([0-8][0-9]{0,1})|(9[0-1]))$" required>
+    </div> <br>
+    <div>
+      <h5>Primes</h5>
+      <div class="form-group">
+        <input [(ngModel)]="round.petitAuBout" class="form-check-input" type="checkbox" value="true" name="petitAuBoutCB" id="petitAuBoutCB">
+        <label class="form-check-label" for="petitAuBoutCB">Petit au bout <strong>(+10 points)</strong> <span class="text-muted"> multipliable</span></label>
+      </div> <br>
+      <div class="form-group">
+        <label for="bonusSelect" class="form-label mt-4">Poignée <span class="text-muted"> non-multipliable</span></label>
+        <select [(ngModel)]="round.bonus" class="form-select" name="bonusSelect" id="bonusSelect">
+          <option value="0" selected>Aucune poignée</option>
+          <option value="20">Simple (+20 points)</option>
+          <option value="30">Double (+30 points)</option>
+          <option value="40">Triple (+40 points)</option>
+        </select>
+      </div>
+    </div> <br>
+    <button class="btn btn-success" type="submit" [disabled]="roundContinuingForm.invalid">Valider la manche</button>
+    <button routerLink="/partie/{{ party.id }}" class="btn btn-warning">Annuler</button>
+  </fieldset>
+</form>

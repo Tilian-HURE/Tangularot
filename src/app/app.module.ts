@@ -10,6 +10,8 @@ import { PartyItemComponent } from './party/party-item/party-item.component';
 import { PartyAddingComponent } from './party/party-adding/party-adding.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
+import { RoundContinuingComponent } from './round/round-continuing/round-continuing.component';
+import { RoundItemComponent } from './round/round-item/round-item.component';
 
 
 @NgModule({
@@ -20,7 +22,9 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     PartyConsultingComponent,
     PartyItemComponent,
-    PartyAddingComponent
+    PartyAddingComponent,
+    RoundContinuingComponent,
+    RoundItemComponent
   ],
   imports: [
     BrowserModule,

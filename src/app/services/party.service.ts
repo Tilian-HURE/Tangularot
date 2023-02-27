@@ -3,6 +3,7 @@ import { environment } from 'src/environments/environment';
 import { Party } from 'src/app/resources/party';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Round } from "../resources/round";
 
 
 @Injectable({
@@ -15,7 +16,7 @@ export class PartyService {
   private readonly partyAPI = environment.apiURL+"/parties";
 
   constructor(
-    private http:HttpClient
+    private http: HttpClient
   ) {}
 
   /**
@@ -39,6 +40,15 @@ export class PartyService {
    */
   public addParty(party: Party): Observable<Party> {
     return this.http.post<Party>(this.partyAPI, party);
+  }
+
+  /**
+   * Updates a party in the JSON database.
+   * @param id: ID of the party to update
+   * @param updatedParty: updated party to save
+   */
+  public updateParty(id: number, updatedParty: Party): Observable<Party> {
+    return this.http.put<Party>(this.partyAPI+"/"+id, updatedParty);
   }
 
   /**
