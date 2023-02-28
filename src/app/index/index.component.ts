@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Party, PartyState } from 'src/app/resources/party';
 import { Observable } from 'rxjs';
 import { PartyService } from 'src/app/services/party.service';
@@ -14,9 +14,10 @@ import { PartyService } from 'src/app/services/party.service';
 export class IndexComponent {
 
   public parties!: Observable<Party[]>;
-  public nbParties = {"totalNbParties":0,
-                       "nbInProgressParties":0,
-                       "nbDoneParties":0}
+  public nbParties = {"totalNbParties":0, "nbInProgressParties":0, "nbDoneParties":0};
+
+  @Output()
+  public refreshHeaderEmitter = new EventEmitter();
 
   constructor(
     private partyService: PartyService
@@ -27,9 +28,10 @@ export class IndexComponent {
    *  and sets the numbers of parties when initializing.
    */
   private ngOnInit(): void {
+    this.refreshHeaderEmitter.emit();
     this.parties = this.partyService.getParties();
-    this.parties.subscribe(OP => (
-      OP.forEach((party: Party) => {
+    this.parties.subscribe(parties => (
+      parties.forEach((party: Party) => {
         if (party.state == PartyState.IN_PROGRESS) {
           this.nbParties.nbInProgressParties++;
         } else {
@@ -38,6 +40,14 @@ export class IndexComponent {
         this.nbParties.totalNbParties++;
       })
     ));
+  }
+
+  /**
+   * Closes the info dialog showed when a party has been removed.
+   */
+  public closeInfoDialog(): void {
+    // @ts-ignore
+    document.querySelector(".toast").classList.replace("show", "hide");
   }
 
 }

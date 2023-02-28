@@ -4,7 +4,7 @@
       <h3 class="mb-0">{{ party.label }}</h3>
       <h6 class="text-primary mb-0">{{ (party.state == 0 ? "EN COURS" : "TERMINÉE") }}</h6>
     </div>
-    <small class="text-muted">{{ lastRoundTimeLabel }}</small>
+    <small class="text-muted">{{ latestTimeLabel }}</small>
   </div>
   <small>Date de début : <span class="text-muted">{{ party.startingDate }}</span>
     <span *ngIf="party.state == 1">
@@ -13,14 +13,31 @@
   </small>
   <div class="d-flex w-100 justify-content-between align-items-center">
     <h6 class="mb-1">
-      <strong>Joueurs : </strong> {{ party.playersName.player1 }},
-      {{ party.playersName.player2 }},
-      {{ party.playersName.player3 }} et
-      {{ party.playersName.player4 }}
+      <strong>Joueurs : </strong> {{ party.playersName[0] }},
+      {{ party.playersName[1] }},
+      {{ party.playersName[2] }} et
+      {{ party.playersName[3] }}
     </h6>
     <div>
       <button type="button" class="btn btn-primary" routerLink="partie/{{ party.id }}">{{ (party.state == 0 ? "Continuer" : "Consulter") }}</button>
-      <button type="button" class="btn btn-warning">Supprimer</button>
+      <button type="button" class="btn btn-warning" (click)="startRemovingDialog()">Supprimer</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <p>
+          Êtes-vous certain(e) de vouloir supprimer cette partie ?
+          <span class="text-muted"> Toutes les données seront définitivement perdues.</span>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="removeParty()">Supprimer</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelRemovingDialog()" data-bs-dismiss="modal">Annuler</button>
+      </div>
     </div>
   </div>
 </div>

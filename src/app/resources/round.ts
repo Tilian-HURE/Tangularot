@@ -12,12 +12,13 @@ export class Round {
   constructor(
     public number: number = 0,
     public date: string = "",
-    public bettingPlayer: any = {"name":"", "key":""},
+    public bettingPlayer: {index:number, name:string} = {"index":0, "name":""},
     public bet: Bet = 1,
     public nbOudlers: number = 0,
     public petitAuBout: boolean = false,
-    public bonus: Bonus | null = 0,
-    public scores = {"player1":0, "player2":0, "player3":0, "player4":0}
+    public bonus: Bonus = 0,
+    public scores: number[] = [0, 0, 0, 0],
+    public previousRoundScores: number[] = [0, 0, 0, 0]
   ) {}
 
 }

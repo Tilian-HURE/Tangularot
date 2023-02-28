@@ -2,22 +2,22 @@
 <form #roundContinuingForm="ngForm" (ngSubmit)="onSubmit(roundContinuingForm)">
   <fieldset>
     <div class="form-group">
-      <label class="form-label mt-4">Joueur preneur</label> <br>
-      <div class="form-check" *ngIf="!playerWhoBet.player1">
-        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player1Betting" value="player1" required>
-        <label class="form-check-label" for="player1Betting">{{ party.playersName.player1 }}</label>
+      <label class="form-label mt-4">Preneur</label> <br>
+      <div class="form-check" *ngIf="!playersWhoBet[0]">
+        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" id="player1Betting" value="0" required>
+        <label class="form-check-label" for="player1Betting">{{ party.playersName[0] }}</label>
       </div>
-      <div class="form-check" *ngIf="!playerWhoBet.player2">
-        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player2Betting" value="player2">
-        <label class="form-check-label" for="player2Betting">{{ party.playersName.player2 }}</label>
+      <div class="form-check" *ngIf="!playersWhoBet[1]">
+        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" id="player2Betting" value="1">
+        <label class="form-check-label" for="player2Betting">{{ party.playersName[1] }}</label>
       </div>
-      <div class="form-check" *ngIf="!playerWhoBet.player3">
-        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player3Betting" value="player3">
-        <label class="form-check-label" for="player3Betting">{{ party.playersName.player3 }}</label>
+      <div class="form-check" *ngIf="!playersWhoBet[2]">
+        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" id="player3Betting" value="2">
+        <label class="form-check-label" for="player3Betting">{{ party.playersName[2] }}</label>
       </div>
-      <div class="form-check" *ngIf="!playerWhoBet.player4">
-        <input [(ngModel)]="round.bettingPlayer.key" class="form-check-input" type="radio" name="bettingPlayerRB" id="player4Betting" value="player4">
-        <label class="form-check-label" for="player4Betting">{{ party.playersName.player4 }}</label>
+      <div class="form-check" *ngIf="!playersWhoBet[3]">
+        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" id="player4Betting" value="3">
+        <label class="form-check-label" for="player4Betting">{{ party.playersName[3] }}</label>
       </div>
     </div> <br>
     <div class="form-group">
@@ -27,6 +27,15 @@
         <option value="2">Garde</option>
         <option value="4">Garde sans le chien</option>
         <option value="6">Garde contre le chien</option>
+      </select>
+    </div> <br>
+    <div class="form-group">
+      <label for="nbOudlersSelect" class="form-label mt-4">Nombre de oudlers</label>
+      <select [(ngModel)]="round.nbOudlers" class="form-select" name="nbOudlersSelect" id="nbOudlersSelect" required>
+        <option value="0" selected>0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
       </select>
     </div> <br>
     <div class="form-group">

@@ -8,7 +8,7 @@ export class Tools {
     return String(currentDate.getDate()).padStart(2, "0") + "/" +
       String(currentDate.getMonth() + 1).padStart(2, "0") + "/" +
       currentDate.getFullYear() + " " + currentDate.getHours() + ":" +
-      currentDate.getMinutes();
+      (currentDate.getMinutes() < 10 ? 0 : "") + currentDate.getMinutes();
   }
 
   /**
@@ -19,7 +19,6 @@ export class Tools {
     const latestDate = new Date(latestDateString.substring(6, 10)+"-"+latestDateString.substring(3, 5)+"-"+latestDateString.substring(0, 3));
     const currentDate = new Date();
     const nbSecondsBetween: number = Math.round((currentDate.getTime()-latestDate.getTime()) / 1000);
-    console.log(nbSecondsBetween);
     if (nbSecondsBetween <= 86399) {
       return "Aujourd'hui";
     } else if (nbSecondsBetween <= 604799) {

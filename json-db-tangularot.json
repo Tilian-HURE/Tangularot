@@ -1,105 +1,60 @@
 {
   "parties": [
     {
-      "id": 1,
+      "id": 15,
       "state": 0,
-      "label": "Partie n°1",
-      "startingDate": "27/02/2023 19:12",
+      "label": "Partie n°15",
+      "startingDate": "28/02/2023 19:14",
       "endingDate": null,
-      "playersName": {
-        "player1": "1",
-        "player2": "2",
-        "player3": "3",
-        "player4": "4"
-      },
+      "playersName": [
+        "42",
+        "452",
+        "452",
+        "542"
+      ],
       "rounds": []
     },
     {
-      "id": 2,
-      "state": 1,
-      "label": "Partie n°2",
-      "startingDate": "27/02/2023 19:12",
-      "endingDate": "27/02/2023 19:14",
-      "playersName": {
-        "player1": "1",
-        "player2": "2",
-        "player3": "3",
-        "player4": "4"
-      },
-      "rounds": [
-        {
-          "number": 1,
-          "date": "27/02/2023 19:14",
-          "bettingPlayer": {
-            "name": "1",
-            "key": "player1"
-          },
-          "bet": 1,
-          "nbOudlers": 0,
-          "petitAuBout": false,
-          "bonus": 0,
-          "scores": {
-            "player1": 0,
-            "player2": 0,
-            "player3": 0,
-            "player4": 0
-          }
-        },
-        {
-          "number": 2,
-          "date": "27/02/2023 19:14",
-          "bettingPlayer": {
-            "name": "4",
-            "key": "player4"
-          },
-          "bet": 1,
-          "nbOudlers": 0,
-          "petitAuBout": false,
-          "bonus": 0,
-          "scores": {
-            "player1": 0,
-            "player2": 0,
-            "player3": 0,
-            "player4": 0
-          }
-        },
-        {
-          "number": 3,
-          "date": "27/02/2023 19:14",
-          "bettingPlayer": {
-            "name": "3",
-            "key": "player3"
-          },
-          "bet": 1,
-          "nbOudlers": 0,
-          "petitAuBout": false,
-          "bonus": 0,
-          "scores": {
-            "player1": 0,
-            "player2": 0,
-            "player3": 0,
-            "player4": 0
-          }
-        },
-        {
-          "number": 4,
-          "date": "27/02/2023 19:14",
-          "bettingPlayer": {
-            "name": "2",
-            "key": "player2"
-          },
-          "bet": 1,
-          "nbOudlers": 0,
-          "petitAuBout": false,
-          "bonus": 0,
-          "scores": {
-            "player1": 0,
-            "player2": 0,
-            "player3": 0,
-            "player4": 0
-          }
-        }
-      ]
+      "id": 16,
+      "state": 0,
+      "label": "Partie n°16",
+      "startingDate": "28/02/2023 19:21",
+      "endingDate": null,
+      "playersName": [
+        "42",
+        "52",
+        "52",
+        "52"
+      ],
+      "rounds": []
+    },
+    {
+      "id": 17,
+      "state": 0,
+      "label": "Partie n°17",
+      "startingDate": "28/02/2023 19:21",
+      "endingDate": null,
+      "playersName": [
+        "453",
+        "25",
+        "52",
+        "25"
+      ],
+      "rounds": []
+    },
+    {
+      "id": 18,
+      "state": 0,
+      "label": "Partie n°18",
+      "startingDate": "28/02/2023 19:22",
+      "endingDate": null,
+      "playersName": [
+        "2.",
+        "45.",
+        "452",
+        "452"
+      ],
+      "rounds": []
     }
   ]
 }

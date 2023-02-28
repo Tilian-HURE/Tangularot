@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PartyService } from 'src/app/services/party.service';
+import { Party } from 'src/app/resources/party';
 
 
 @Component({
@@ -8,4 +10,18 @@ import { Component } from '@angular/core';
 })
 
 
-export class HeaderComponent {}
+export class HeaderComponent {
+
+  public parties: Party[] = [];
+
+  constructor(
+    private partyService: PartyService
+  ) {}
+
+  // TODO
+  private ngOnInit(): void {
+    console.log("init");
+    this.partyService.getParties().subscribe(parties => this.parties = parties);
+  }
+
+}

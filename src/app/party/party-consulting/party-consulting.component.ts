@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { Party, PartyState } from 'src/app/resources/party';
-import { Observable } from 'rxjs';
+import { Party } from 'src/app/resources/party';
 import { Round } from 'src/app/resources/round';
 import { PartyService } from 'src/app/services/party.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,7 +24,8 @@ export class PartyConsultingComponent {
   ) {}
 
   /**
-   * Gets the consulted party and the observed rounds from the JSON database when initializing.
+   * Gets the consulted party and the observed rounds from the
+   *  JSON database when initializing.
    */
   private ngOnInit(): void {
     const partyID: number = this.activeRoute.snapshot.params["id"];

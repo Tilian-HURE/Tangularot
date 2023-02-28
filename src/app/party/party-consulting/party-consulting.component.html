@@ -6,22 +6,26 @@
   <span *ngIf="party.state == 1">
       - Date de fin : <span class="text-muted">{{ party.endingDate }}</span>
     </span>
-</small>
-<h6 class="mb-1">
-  <strong>Joueurs : </strong> {{ party.playersName.player1 }},
-  {{ party.playersName.player2 }},
-  {{ party.playersName.player3 }} et
-  {{ party.playersName.player4 }}
-</h6>
+</small> <br>
 <button class="btn btn-lg btn-secondary" type="button" routerLink="/partie/{{ party.id }}/continuer" [disabled]="party.state == 1">
   {{ party.state == 0 ? "Continuer la partie" : "Partie terminée" }}
 </button>
-<h3>Manches</h3>
-<div>
-  <div *ngIf="party.rounds.length > 0; else showText" class="list-group">
-    <app-round-item *ngFor="let round of rounds" [round]="round"></app-round-item>
-  </div>
-  <ng-template #showText>
-    <p class="text-secondary">Aucune manche</p>
-  </ng-template>
-</div>
+<h3>Manches et scores</h3>
+<table class="table" *ngIf="party.rounds.length > 0; else showText">
+  <thead>
+  <tr>
+    <th scope="col">N° de manche</th>
+    <th scope="col">{{ party.playersName[0] }}</th>
+    <th scope="col">{{ party.playersName[1] }}</th>
+    <th scope="col">{{ party.playersName[2] }}</th>
+    <th scope="col">{{ party.playersName[3] }}</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+    <tr app-round-item *ngFor="let round of rounds" [round]="round"></tr>
+  </tbody>
+</table>
+<ng-template #showText>
+  <p class="text-secondary">Aucune manche</p>
+</ng-template>

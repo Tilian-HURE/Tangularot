@@ -21,7 +21,8 @@ export class RoundContinuingComponent {
   public party: Party = new Party();
   public round: Round = new Round();
   public bettingPlayerGivenScore: number = 0;
-  public playerWhoBet = {"player1":false, "player2":false, "player3":false, "player4":false};
+
+  public playersWhoBet: boolean[] = [false, false, false, false];
 
   constructor(
     private partyService: PartyService,
@@ -39,24 +40,36 @@ export class RoundContinuingComponent {
         this.party = party;
         this.round.number = this.party.rounds.length + 1;
         this.party.rounds.forEach((round: Round) => {
-          switch (round.bettingPlayer.key) {
-            case "player1":
-              this.playerWhoBet.player1 = true;
-              break;
-            case "player2":
-              this.playerWhoBet.player2 = true;
-              break;
-            case "player3":
-              this.playerWhoBet.player3 = true;
-              break;
-            case "player4":
-              this.playerWhoBet.player4 = true;
-              break;
-          }
+          this.playersWhoBet[round.bettingPlayer.index] = true;
         })
       },
       error: e => this.router.navigateByUrl("")
     });
+  }
+
+  /**
+   * Calculates the score for each player according to all the given data.
+   */
+  private calculateScores(): void {
+    const oudlersScores: number[] = [56, 51, 41, 36];
+    this.round.previousRoundScores = (this.party.rounds.length > 0 ?
+      this.party.rounds[this.party.rounds.length-1].scores : [0, 0, 0, 0]);
+    const totalScore: number = (25+
+      Math.abs(this.bettingPlayerGivenScore-oudlersScores[this.round.nbOudlers])+
+      (Number(this.round.petitAuBout)*10)) * Number(this.round.bet) + Number(this.round.bonus);
+    // The betting player is winning
+    if (this.bettingPlayerGivenScore >= oudlersScores[this.round.nbOudlers]) {
+      for (let i = 0; i < 4; i++) {
+        this.round.scores[i] = this.round.previousRoundScores[i] + (i == this.round.bettingPlayer.index ?
+          totalScore*3 : -totalScore);
+      }
+      // The betting player is losing
+    } else {
+      for (let i = 0; i < 4; i++) {
+        this.round.scores[i] = this.round.previousRoundScores[i] + (i == this.round.bettingPlayer.index ?
+          -totalScore*3 : totalScore);
+      }
+    }
   }
 
   /**
@@ -66,20 +79,8 @@ export class RoundContinuingComponent {
   public onSubmit(roundContinuingForm: NgForm): void {
     if (roundContinuingForm.valid) {
       const partyID: number = this.activatedRoute.snapshot.params["id"];
-      switch (this.round.bettingPlayer.key) {
-        case "player1":
-          this.round.bettingPlayer.name = this.party.playersName.player1;
-          break;
-        case "player2":
-          this.round.bettingPlayer.name = this.party.playersName.player2;
-          break;
-        case "player3":
-          this.round.bettingPlayer.name = this.party.playersName.player3;
-          break;
-        case "player4":
-          this.round.bettingPlayer.name = this.party.playersName.player4;
-          break;
-      }
+      this.round.bettingPlayer.name = this.party.playersName[this.round.bettingPlayer.index];
+      this.calculateScores();
       this.round.date = Tools.getCurrentStringDate();
       this.party.rounds[(this.party.rounds.length > 0 ? this.party.rounds.length : 0)] = this.round;
       if (this.party.rounds.length == 4) {
