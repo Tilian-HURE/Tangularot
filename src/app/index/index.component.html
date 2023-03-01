@@ -1,30 +1,27 @@
-<h1>Parties</h1>
-<p *ngIf="nbParties.totalNbParties > 0">
-  <strong>{{ nbParties.totalNbParties }}</strong>
-  partie(s) au total,
-  <strong>{{ nbParties.nbInProgressParties }}</strong>
-  en cour et <strong>{{ nbParties.nbDoneParties }}
-  </strong> terminée(s)
-</p>
-<button class="btn btn-lg btn-secondary" type="button" routerLink="/partie/nouvelle">Ajouter une partie</button>
-<div>
-  <div *ngIf="nbParties.totalNbParties > 0; else showText" class="list-group">
-    <app-partie-item *ngFor="let party of parties|async" [party]="party"></app-partie-item>
+<div class="d-flex flex-row align-items-end justify-content-between mb-3">
+  <div>
+    <h1 class="mb-0">PARTIES</h1>
+    <div class="d-flex flex-row flex-wrap">
+      <h5 *ngIf="nbParties.totalNbParties > 0" class="mb-0">
+        <strong>{{ nbParties.totalNbParties }}</strong>
+        partie(s) au total,&nbsp;
+      </h5>
+      <h5 *ngIf="nbParties.totalNbParties > 0" class="mb-0">
+        <strong>{{ nbParties.nbInProgressParties }}</strong>
+        en cour et&nbsp;
+      </h5>
+      <h5>
+        <strong>{{ nbParties.nbDoneParties }}</strong>
+        terminée(s)
+      </h5>
+    </div>
   </div>
-  <ng-template #showText>
-    <p class="text-secondary">Aucune partie</p>
-  </ng-template>
+  <button class="btn btn-lg btn-outline-primary text-nowrap" type="button" routerLink="/partie/nouvelle">Nouvelle partie</button>
 </div>
 
-<div class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <strong class="me-auto">INFORMATION</strong>
-    <small>Fermer</small>
-    <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true"></span>
-    </button>
-  </div>
-  <div class="toast-body">
-    La partie a bien été supprimée.
-  </div>
+<div *ngIf="nbParties.totalNbParties > 0; else showText" class="list-group" style="margin-bottom:5rem">
+  <app-partie-item *ngFor="let party of parties|async" [party]="party" class="list-group-item flex-column align-items-start"></app-partie-item>
 </div>
+<ng-template #showText>
+  <h5 class="text-secondary">Aucune partie</h5>
+</ng-template>

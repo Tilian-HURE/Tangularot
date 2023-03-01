@@ -3,4 +3,5 @@
   z-index:999;
   justify-content:center;
   align-items:center;
+  backdrop-filter:brightness(50%);
 }

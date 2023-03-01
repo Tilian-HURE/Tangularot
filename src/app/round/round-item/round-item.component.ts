@@ -13,13 +13,22 @@ export class RoundItemComponent {
 
   @Input()
   public round: Round = new Round();
+  public difference: number = 0;
 
   /**
-   * Show a dialog detailing all the round's data.
+   * Calculates the difference between the betting player's score
+   *  and the score corresponding to the number of oudlers given.
+   */
+  private ngOnInit(): void {
+    this.difference = this.round.bettingPlayerOriginalScore - [56, 51, 41, 36][this.round.nbOudlers];
+  }
+
+  /**
+   * Shows a dialog detailing all the round's data.
    */
   public startInfoDialog(): void {
     // @ts-ignore
-    document.getElementById(this.round.number).classList.replace("hide", "show");
+    document.getElementById(this.round.number).style.display = "block";
   }
 
   /**
@@ -27,7 +36,7 @@ export class RoundItemComponent {
    */
   public closeInfoDialog(): void {
     // @ts-ignore
-    document.getElementById(this.round.number).classList.replace("show", "hide");
+    document.getElementById(this.round.number).style.display = "none";
   }
 
 }

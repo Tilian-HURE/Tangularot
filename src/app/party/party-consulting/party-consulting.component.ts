@@ -24,7 +24,7 @@ export class PartyConsultingComponent {
   ) {}
 
   /**
-   * Gets the consulted party and the observed rounds from the
+   * Gets the consulted party and the observable rounds from the
    *  JSON database when initializing.
    */
   private ngOnInit(): void {

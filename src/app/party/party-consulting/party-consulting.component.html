@@ -1,31 +1,44 @@
-<div>
-  <h1>{{ party.label }}</h1>
-  <h5 class="text-primary">{{ (party.state == 0 ? "EN COURS" : "TERMINÉE") }}</h5>
+<a routerLink="" class="d-block mb-3 fit" style="width:fit-content"><h5 class="mb-0"><< Retour</h5></a>
+
+<div class="d-flex flex-row align-items-end justify-content-between flex-wrap mb-4">
+  <div>
+    <div class="d-flex align-items-end">
+      <h2 class="mb-0">{{ party.label }}</h2>
+      <h5 class="text-primary mb-1 ms-2" *ngIf="party.state == 0">EN COURS</h5>
+      <h5 class="text-muted mb-1 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
+    </div>
+    <div class="d-flex flex-row flex-wrap">
+      <h5 class="mb-0">
+        <strong>Date de début :&nbsp;</strong>
+        {{ party.startingDate }}&nbsp;
+      </h5>
+      <h5 class="mb-0" *ngIf="party.state == 1">
+        <strong>- Date de fin :&nbsp;</strong>
+        {{ party.endingDate }}
+      </h5>
+    </div>
+  </div>
+  <button class="btn btn-lg btn-outline-primary text-nowrap mt-3" *ngIf="party.state == 0" type="button" routerLink="/partie/{{ party.id }}/continuer">Continuer la partie</button>
 </div>
-<small>Date de début : <span class="text-muted">{{ party.startingDate }}</span>
-  <span *ngIf="party.state == 1">
-      - Date de fin : <span class="text-muted">{{ party.endingDate }}</span>
-    </span>
-</small> <br>
-<button class="btn btn-lg btn-secondary" type="button" routerLink="/partie/{{ party.id }}/continuer" [disabled]="party.state == 1">
-  {{ party.state == 0 ? "Continuer la partie" : "Partie terminée" }}
-</button>
-<h3>Manches et scores</h3>
-<table class="table" *ngIf="party.rounds.length > 0; else showText">
-  <thead>
-  <tr>
-    <th scope="col">N° de manche</th>
-    <th scope="col">{{ party.playersName[0] }}</th>
-    <th scope="col">{{ party.playersName[1] }}</th>
-    <th scope="col">{{ party.playersName[2] }}</th>
-    <th scope="col">{{ party.playersName[3] }}</th>
-    <th scope="col"></th>
-  </tr>
-  </thead>
-  <tbody>
-    <tr app-round-item *ngFor="let round of rounds" [round]="round"></tr>
-  </tbody>
-</table>
-<ng-template #showText>
-  <p class="text-secondary">Aucune manche</p>
-</ng-template>
+
+<h3 class="mb-1">MANCHES ET SCORES</h3>
+<div class="overflow-auto">
+  <table class="table" *ngIf="party.rounds.length > 0; else showText">
+    <thead>
+    <tr class="text-center">
+      <th scope="col"><h5 class="mb-0"><strong>MANCHE</strong></h5></th>
+      <th scope="col"><h5 class="mb-0 text-info">{{ party.playersName[0] }}</h5></th>
+      <th scope="col"><h5 class="mb-0 text-info">{{ party.playersName[1] }}</h5></th>
+      <th scope="col"><h5 class="mb-0 text-info">{{ party.playersName[2] }}</h5></th>
+      <th scope="col"><h5 class="mb-0 text-info">{{ party.playersName[3] }}</h5></th>
+      <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr app-round-item *ngFor="let round of rounds" [round]="round" class="text-center"></tr>
+    </tbody>
+  </table>
+  <ng-template #showText>
+    <h5 class="text-secondary">Aucune manche</h5>
+  </ng-template>
+</div>

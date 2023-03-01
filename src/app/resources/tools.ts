@@ -12,7 +12,7 @@ export class Tools {
   }
 
   /**
-   * Returns a label (string typed and in French) from the given latest date like 'Today', 'some days ago', etc.
+   * Returns a label (string typed and in French) from the given date (like 'Today', 'some days ago', etc).
    * @param latestDateString: latest date string typed and french formatted
    */
   public static getLatestTimeLabel(latestDateString: string): string {

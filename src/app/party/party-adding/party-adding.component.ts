@@ -26,9 +26,12 @@ export class PartyAddingComponent {
    * Sets the new party ID and label when initializing.
    */
   private ngOnInit(): void {
-    this.partyService.getParties().subscribe(OP => {
-      this.party.id = (OP.length > 0 ? OP[OP.length - 1].id + 1 : 0);
-      this.party.label = "Partie n°" + (OP.length > 0 ? this.party.id : 1);
+    this.partyService.getParties().subscribe({
+      next: parties => {
+        this.party.id = (parties.length > 0 ? parties[parties.length - 1].id + 1 : 0);
+        this.party.label = "Partie n°" + (parties.length > 0 ? this.party.id : 1);
+      },
+      error: e => console.log("Error when getting the data from the JSON database.") // TODO
     });
   }
 
@@ -40,8 +43,8 @@ export class PartyAddingComponent {
     if (partyAddingForm.valid) {
       this.party.startingDate = Tools.getCurrentStringDate();
       this.partyService.addParty(this.party).subscribe({
-        next: success => this.router.navigateByUrl(""),
-        error: e => console.log("Error when adding data to the database:\n"+e)
+        next: success => this.router.navigateByUrl("").then(() => location.reload()),
+        error: e => console.log("Error when adding the data to the database.") // TODO
       });
     }
   }

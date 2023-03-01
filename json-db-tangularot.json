@@ -1,58 +1,173 @@
 {
   "parties": [
     {
-      "id": 15,
+      "id": 2,
+      "state": 1,
+      "label": "Partie n°2",
+      "startingDate": "01/03/2023 16:08",
+      "endingDate": "01/03/2023 16:14",
+      "playersName": [
+        "Gus",
+        "Dx",
+        "Mine",
+        "Kraft"
+      ],
+      "rounds": [
+        {
+          "number": 1,
+          "date": "01/03/2023 16:13",
+          "bettingPlayer": {
+            "index": "2",
+            "name": "Mine"
+          },
+          "bet": "2",
+          "nbOudlers": "2",
+          "petitAuBout": false,
+          "bonus": "30",
+          "bettingPlayerOriginalScore": "42",
+          "scores": [
+            -82,
+            -82,
+            246,
+            -82
+          ],
+          "previousRoundScores": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "number": 2,
+          "date": "01/03/2023 16:13",
+          "bettingPlayer": {
+            "index": "3",
+            "name": "Kraft"
+          },
+          "bet": "6",
+          "nbOudlers": "2",
+          "petitAuBout": true,
+          "bonus": "40",
+          "bettingPlayerOriginalScore": "43",
+          "scores": [
+            -344,
+            -344,
+            -16,
+            704
+          ],
+          "previousRoundScores": [
+            -82,
+            -82,
+            246,
+            -82
+          ]
+        },
+        {
+          "number": 3,
+          "date": "01/03/2023 16:14",
+          "bettingPlayer": {
+            "index": "0",
+            "name": "Gus"
+          },
+          "bet": "4",
+          "nbOudlers": "2",
+          "petitAuBout": false,
+          "bonus": 0,
+          "bettingPlayerOriginalScore": "38",
+          "scores": [
+            -680,
+            -232,
+            96,
+            816
+          ],
+          "previousRoundScores": [
+            -344,
+            -344,
+            -16,
+            704
+          ]
+        },
+        {
+          "number": 4,
+          "date": "01/03/2023 16:14",
+          "bettingPlayer": {
+            "index": "1",
+            "name": "Dx"
+          },
+          "bet": "6",
+          "nbOudlers": "1",
+          "petitAuBout": false,
+          "bonus": "20",
+          "bettingPlayerOriginalScore": "48",
+          "scores": [
+            -492,
+            -796,
+            284,
+            1004
+          ],
+          "previousRoundScores": [
+            -680,
+            -232,
+            96,
+            816
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
       "state": 0,
-      "label": "Partie n°15",
-      "startingDate": "28/02/2023 19:14",
+      "label": "Partie n°5",
+      "startingDate": "01/03/2023 16:22",
       "endingDate": null,
       "playersName": [
-        "42",
-        "452",
-        "452",
-        "542"
+        "1",
+        "45",
+        "7",
+        "5"
       ],
       "rounds": []
     },
     {
-      "id": 16,
+      "id": 6,
       "state": 0,
-      "label": "Partie n°16",
-      "startingDate": "28/02/2023 19:21",
+      "label": "Partie n°6",
+      "startingDate": "01/03/2023 16:28",
       "endingDate": null,
       "playersName": [
-        "42",
-        "52",
-        "52",
-        "52"
+        "1",
+        "2",
+        "4",
+        "5"
       ],
       "rounds": []
     },
     {
-      "id": 17,
+      "id": 7,
       "state": 0,
-      "label": "Partie n°17",
-      "startingDate": "28/02/2023 19:21",
+      "label": "Partie n°7",
+      "startingDate": "01/03/2023 16:28",
       "endingDate": null,
       "playersName": [
-        "453",
+        "8",
+        "54",
         "25",
-        "52",
-        "25"
+        "5"
       ],
       "rounds": []
     },
     {
-      "id": 18,
+      "id": 8,
       "state": 0,
-      "label": "Partie n°18",
-      "startingDate": "28/02/2023 19:22",
+      "label": "Partie n°8",
+      "startingDate": "01/03/2023 16:28",
       "endingDate": null,
       "playersName": [
-        "2.",
-        "45.",
-        "452",
-        "452"
+        "4",
+        "4",
+        "4",
+        "4"
       ],
       "rounds": []
     }

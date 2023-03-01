@@ -5,7 +5,6 @@ import { PartyService } from 'src/app/services/party.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { Tools } from "src/app/resources/tools";
-import { max } from 'rxjs';
 
 
 @Component({
@@ -20,7 +19,6 @@ export class RoundContinuingComponent {
   // Bound to the form
   public party: Party = new Party();
   public round: Round = new Round();
-  public bettingPlayerGivenScore: number = 0;
 
   public playersWhoBet: boolean[] = [false, false, false, false];
 
@@ -31,7 +29,7 @@ export class RoundContinuingComponent {
   ) {}
 
   /**
-   * Sets the current party and the round when initializing.
+   * Gets the current party and its rounds when initializing.
    */
   private ngOnInit(): void {
     const partyID: number = this.activatedRoute.snapshot.params["id"];
@@ -55,10 +53,10 @@ export class RoundContinuingComponent {
     this.round.previousRoundScores = (this.party.rounds.length > 0 ?
       this.party.rounds[this.party.rounds.length-1].scores : [0, 0, 0, 0]);
     const totalScore: number = (25+
-      Math.abs(this.bettingPlayerGivenScore-oudlersScores[this.round.nbOudlers])+
+      Math.abs(this.round.bettingPlayerOriginalScore-oudlersScores[this.round.nbOudlers])+
       (Number(this.round.petitAuBout)*10)) * Number(this.round.bet) + Number(this.round.bonus);
     // The betting player is winning
-    if (this.bettingPlayerGivenScore >= oudlersScores[this.round.nbOudlers]) {
+    if (this.round.bettingPlayerOriginalScore >= oudlersScores[this.round.nbOudlers]) {
       for (let i = 0; i < 4; i++) {
         this.round.scores[i] = this.round.previousRoundScores[i] + (i == this.round.bettingPlayer.index ?
           totalScore*3 : -totalScore);
@@ -89,7 +87,7 @@ export class RoundContinuingComponent {
       }
       this.partyService.updateParty(partyID, this.party).subscribe({
         next: success => this.router.navigateByUrl("/partie/" + partyID),
-        error: e => console.log("Error when updating data in the database:\n" + e)
+        error: e => console.log("Error when updating the data in the database.") // TODO
       });
     }
   }

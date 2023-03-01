@@ -17,6 +17,7 @@ export class Round {
     public nbOudlers: number = 0,
     public petitAuBout: boolean = false,
     public bonus: Bonus = 0,
+    public bettingPlayerOriginalScore: number = 0,
     public scores: number[] = [0, 0, 0, 0],
     public previousRoundScores: number[] = [0, 0, 0, 0]
   ) {}

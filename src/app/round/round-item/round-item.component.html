@@ -1,90 +1,104 @@
-<th scope="col">{{ round.number }}</th>
+<th scope="col"><h5 class="mb-0"><strong>#{{ round.number }}</strong></h5></th>
 <td>
-  <div class="d-flex flex-row">
-    <h5>{{ round.scores[0] }}</h5>
-    <p class="text-danger" *ngIf="round.number > 1 && round.scores[0]-round.previousRoundScores[0] < 0">
+  <div>
+    <h4>{{ round.scores[0] }}</h4>
+    <label class="text-danger" *ngIf="round.number > 1 && round.scores[0]-round.previousRoundScores[0] < 0">
       {{ round.scores[0]-round.previousRoundScores[0] }}
-    </p>
-    <p class="text-success" *ngIf="round.number > 1 && round.scores[0]-round.previousRoundScores[0] > 0">
+    </label>
+    <label class="text-success" *ngIf="round.number > 1 && round.scores[0]-round.previousRoundScores[0] > 0">
       +{{ round.scores[0]-round.previousRoundScores[0] }}
-    </p>
+    </label>
   </div>
 </td>
 <td>
-  <div class="d-flex flex-row">
-    <h5>{{ round.scores[1] }}</h5>
-    <p class="text-danger" *ngIf="round.number > 1 && round.scores[1]-round.previousRoundScores[1] < 0">
+  <div>
+    <h4>{{ round.scores[1] }}</h4>
+    <label class="text-danger" *ngIf="round.number > 1 && round.scores[1]-round.previousRoundScores[1] < 0">
       {{ round.scores[1]-round.previousRoundScores[1] }}
-    </p>
-    <p class="text-success" *ngIf="round.number > 1 && round.scores[1]-round.previousRoundScores[1] > 0">
+    </label>
+    <label class="text-success" *ngIf="round.number > 1 && round.scores[1]-round.previousRoundScores[1] > 0">
       +{{ round.scores[1]-round.previousRoundScores[1] }}
-    </p>
+    </label>
   </div>
 </td>
 <td>
-  <div class="d-flex flex-row">
-    <h5>{{ round.scores[2] }}</h5>
-    <p class="text-danger" *ngIf="round.number > 1 && round.scores[2]-round.previousRoundScores[2] < 0">
+  <div>
+    <h4>{{ round.scores[2] }}</h4>
+    <label class="text-danger" *ngIf="round.number > 1 && round.scores[2]-round.previousRoundScores[2] < 0">
       {{ round.scores[2]-round.previousRoundScores[2] }}
-    </p>
-    <p class="text-success" *ngIf="round.number > 1 && round.scores[2]-round.previousRoundScores[2] > 0">
+    </label>
+    <label class="text-success" *ngIf="round.number > 1 && round.scores[2]-round.previousRoundScores[2] > 0">
       +{{ round.scores[2]-round.previousRoundScores[2] }}
-    </p>
+    </label>
   </div>
 </td>
 <td>
-  <div class="d-flex flex-row">
-    <h5>{{ round.scores[3] }}</h5>
-    <p class="text-danger" *ngIf="round.number > 1 && round.scores[3]-round.previousRoundScores[3] < 0">
+  <div>
+    <h4>{{ round.scores[3] }}</h4>
+    <label class="text-danger" *ngIf="round.number > 1 && round.scores[3]-round.previousRoundScores[3] < 0">
       {{ round.scores[3]-round.previousRoundScores[3] }}
-    </p>
-    <p class="text-success" *ngIf="round.number > 1 && round.scores[3]-round.previousRoundScores[3] > 0">
+    </label>
+    <label class="text-success" *ngIf="round.number > 1 && round.scores[3]-round.previousRoundScores[3] > 0">
       +{{ round.scores[3]-round.previousRoundScores[3] }}
-    </p>
+    </label>
   </div>
 </td>
 <td>
-  <button type="button" class="btn btn-primary" (click)="startInfoDialog()">Voir plus</button>
+  <button type="button" class="btn btn-primary w-100 text-nowrap" (click)="startInfoDialog()">Voir plus</button>
 </td>
 
-<div id="{{ round.number }}" class="toast hide bg-white" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <div class="d-flex flex-row me-auto">
-      <strong>Bootstrap</strong>
-      <small>Date : <span class="text-muted">{{ round.date }}</span></small>
+<div class="modal" id="{{ round.number }}">
+  <div class="toast show bg-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <div class="d-flex flex-row me-auto align-items-end">
+        <h5 class="mb-0"><strong>MANCHE n°{{ round.number }}</strong></h5>
+        <label class="ms-2">Date : <span class="text-muted">{{ round.date }}</span></label>
+      </div>
+      <label>Fermer</label>
+      <button type="button" class="btn-close ms-1 me-1 mb-1" (click)="closeInfoDialog()">
+        <span aria-hidden="true"></span>
+      </button>
     </div>
-    <small>Fermer</small>
-    <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true"></span>
-    </button>
-  </div>
-  <div class="toast-body">
-    <ul class="list-group">
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Preneur
-        <span class="text-primary">{{ round.bettingPlayer.name }}</span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Cras justo odio
-        <span class="text-primary" *ngIf="round.bet == 1">Petite</span>
-        <span class="text-primary" *ngIf="round.bet == 2">Garde</span>
-        <span class="text-primary" *ngIf="round.bet == 4">Garde sans le chien</span>
-        <span class="text-primary" *ngIf="round.bet == 6">Garde contre le chien</span>
-      </li>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        Nombre de oudlers
-        <span class="badge bg-primary rounded-pill">{{ round.nbOudlers }}</span>
-      </li>
-      <li *ngIf="round.petitAuBout" class="list-group-item d-flex justify-content-between align-items-center">
-        Petit au bout
-        <span class="badge bg-success rounded-pill">Oui</span>
-      </li>
-      <li *ngIf="round.bonus > 0" class="list-group-item d-flex justify-content-between align-items-center">
-        Poignée
-        <span class="text-primary" *ngIf="round.bonus == 20">Simple</span>
-        <span class="text-primary" *ngIf="round.bonus == 30">Double</span>
-        <span class="text-primary" *ngIf="round.bonus == 40">Triple</span>
-      </li>
-    </ul>
+    <div class="toast-body">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            Preneur
+            <span class="text-primary">{{ round.bettingPlayer.name }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Type de pari
+          <span class="text-primary" *ngIf="round.bet == 1">Petite</span>
+          <span class="text-primary" *ngIf="round.bet == 2">Garde</span>
+          <span class="text-primary" *ngIf="round.bet == 4">Garde sans le chien</span>
+          <span class="text-primary" *ngIf="round.bet == 6">Garde contre le chien</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Nombre de oudlers
+          <span class="badge bg-primary rounded-pill">{{ round.nbOudlers }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Score original
+          <span class="badge bg-primary rounded-pill">{{ round.bettingPlayerOriginalScore }} point(s)</span>
+        </li>
+        <li *ngIf="round.petitAuBout" class="list-group-item d-flex justify-content-between align-items-center">
+          Petit au bout
+          <span class="badge bg-success rounded-pill">Oui</span>
+        </li>
+        <li *ngIf="round.bonus > 0" class="list-group-item d-flex justify-content-between align-items-center">
+          Poignée
+          <span class="text-primary" *ngIf="round.bonus == 20">Simple</span>
+          <span class="text-primary" *ngIf="round.bonus == 30">Double</span>
+          <span class="text-primary" *ngIf="round.bonus == 40">Triple</span>
+        </li>
+        <li *ngIf="difference > 0" class="list-group-item d-flex justify-content-between align-items-center">
+          Victoire de
+          <span class="badge bg-success rounded-pill">{{ difference }} point(s)</span>
+        </li>
+        <li *ngIf="difference < 0" class="list-group-item d-flex justify-content-between align-items-center">
+          Défaite de
+          <span class="badge bg-danger rounded-pill">{{ -difference }} point(s)</span>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>

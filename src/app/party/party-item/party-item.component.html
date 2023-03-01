@@ -1,41 +1,45 @@
-<div class="list-group-item flex-column align-items-start">
+<div class="mb-2">
   <div class="d-flex w-100 justify-content-between align-items-center">
-    <div class="d-flex align-items-center">
-      <h3 class="mb-0">{{ party.label }}</h3>
-      <h6 class="text-primary mb-0">{{ (party.state == 0 ? "EN COURS" : "TERMINÉE") }}</h6>
+    <div class="d-flex align-items-end">
+      <h2 class="mb-0">{{ party.label }}</h2>
+      <h5 class="text-primary mb-1 ms-2" *ngIf="party.state == 0">EN COURS</h5>
+      <h5 class="text-muted mb-1 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
     </div>
-    <small class="text-muted">{{ latestTimeLabel }}</small>
+    <label class="text-muted">{{ latestTimeLabel }}</label>
   </div>
-  <small>Date de début : <span class="text-muted">{{ party.startingDate }}</span>
+  <label>
+    <strong>Date de début :&nbsp;</strong>
+    {{ party.startingDate }}
     <span *ngIf="party.state == 1">
-      - Date de fin : <span class="text-muted">{{ party.endingDate }}</span>
+      <strong>- Date de fin :&nbsp;</strong>
+      {{ party.endingDate }}
     </span>
-  </small>
-  <div class="d-flex w-100 justify-content-between align-items-center">
-    <h6 class="mb-1">
-      <strong>Joueurs : </strong> {{ party.playersName[0] }},
-      {{ party.playersName[1] }},
-      {{ party.playersName[2] }} et
-      {{ party.playersName[3] }}
-    </h6>
-    <div>
-      <button type="button" class="btn btn-primary" routerLink="partie/{{ party.id }}">{{ (party.state == 0 ? "Continuer" : "Consulter") }}</button>
-      <button type="button" class="btn btn-warning" (click)="startRemovingDialog()">Supprimer</button>
-    </div>
+  </label>
+</div>
+
+<div class="d-flex w-100 justify-content-between align-items-center">
+  <h5 class="mb-0">
+    <strong>Joueurs : </strong> {{ party.playersName[0] }},
+    {{ party.playersName[1] }},
+    {{ party.playersName[2] }} et
+    {{ party.playersName[3] }}
+  </h5>
+  <div class="d-flex flex-row flex-nowrap">
+    <button type="button" class="btn btn-primary" *ngIf="party.state == 0" routerLink="partie/{{ party.id }}">Continuer</button>
+    <button type="button" class="btn btn-secondary" *ngIf="party.state == 1" routerLink="partie/{{ party.id }}">Consulter</button>
+    <button type="button" class="btn btn-warning ms-1" (click)="startRemovingDialog()">Supprimer</button>
   </div>
 </div>
 
-<div class="modal">
+<div class="modal" id="{{ party.id }}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-body">
-        <p>
-          Êtes-vous certain(e) de vouloir supprimer cette partie ?
-          <span class="text-muted"> Toutes les données seront définitivement perdues.</span>
-        </p>
+        <h5>Êtes-vous certain(e) de vouloir supprimer cette partie ?</h5>
+        <label class="text-muted">Toutes les données seront définitivement perdues.</label>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" (click)="removeParty()">Supprimer</button>
+        <button type="button" class="btn btn-danger" (click)="removeParty()">Supprimer</button>
         <button type="button" class="btn btn-secondary" (click)="cancelRemovingDialog()" data-bs-dismiss="modal">Annuler</button>
       </div>
     </div>

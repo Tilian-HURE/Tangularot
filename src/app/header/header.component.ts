@@ -18,10 +18,14 @@ export class HeaderComponent {
     private partyService: PartyService
   ) {}
 
-  // TODO
+  /**
+   * Gets the observable parties from the JSON database.
+   */
   private ngOnInit(): void {
-    console.log("init");
-    this.partyService.getParties().subscribe(parties => this.parties = parties);
+    this.partyService.getParties().subscribe({
+      next: parties => this.parties = parties,
+      error: e => console.log("Error when getting the party from the JSON database.") // TODO
+    });
   }
 
 }

@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 import { Party } from 'src/app/resources/party';
 import { Tools } from 'src/app/resources/tools';
 import { PartyService } from 'src/app/services/party.service';
-import { Router } from '@angular/router';
 
 
 @Component({
@@ -20,7 +19,6 @@ export class PartyItemComponent {
 
   constructor(
     private partyService: PartyService,
-    private router: Router
   ) {}
 
   /**
@@ -37,7 +35,7 @@ export class PartyItemComponent {
    */
   public startRemovingDialog(): void {
     // @ts-ignore
-    document.querySelector(".modal").style.display = "flex";
+    document.getElementById(this.party.id).style.display = "flex";
   }
 
   /**
@@ -45,7 +43,7 @@ export class PartyItemComponent {
    */
   public cancelRemovingDialog(): void {
     // @ts-ignore
-    document.querySelector(".modal").style.display = "none";
+    document.getElementById(this.party.id).style.display = "none";
   }
 
   /**
@@ -54,14 +52,9 @@ export class PartyItemComponent {
   public removeParty(): void {
     this.partyService.removeParty(this.party.id).subscribe({
       next: success => {
-        this.router.navigateByUrl("/partie/nouvelle").then(() => (
-          this.router.navigateByUrl("").then(() => (
-            // @ts-ignore
-            document.querySelector(".toast").classList.replace("hide", "show")
-          ))
-        ));
+        location.reload(); // refreshes the application to update its content
       },
-      error: e => console.log("Error when deleting data from the JSON database.")
+      error: e => console.log("Error when deleting the data from the JSON database.") // TODO
     });
   }
 

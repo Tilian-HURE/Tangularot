@@ -1,9 +1,45 @@
+td, th {
+  vertical-align:middle;
+}
+
+td > div {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+td > div > h4 {
+  margin-bottom:0;
+}
+
+td > div > label {
+  margin-left:0.25rem;
+}
+
+td button {
+  max-width:170px;
+}
+
+.modal {
+  display:none;
+  backdrop-filter:brightness(50%);
+}
+
 .toast {
-  width:75%;
+  width:90%;
   max-width:500px;
   z-index: 999;
   position:absolute;
   top:50vh;
   left:50vw;
   transform:translate(-50%, -50%);
+}
+
+.toast li {
+  font-size:1.25rem;
+}
+
+.toast button {
+  background-size:85%;
 }
