@@ -1,0 +1,17 @@
+input, select {
+  font-size:1.25rem;
+}
+
+button {
+  max-width:400px;
+}
+
+.form-check > h4 {
+  margin-bottom:0;
+}
+
+.alert {
+  display:none;
+  left:inherit;
+  width:fit-content;
+}

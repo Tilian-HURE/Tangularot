@@ -1,22 +1,30 @@
-<div class="mx-auto">
-  <h1 class="mb-3">NOUVELLE PARTIE</h1>
-  <form #partyAddingForm="ngForm" (ngSubmit)="onSubmit(partyAddingForm)">
-    <fieldset>
-      <h4>Libellé de la partie</h4>
-      <div class="form-group mb-4">
-        <input [(ngModel)]="party.label" name="partieLabel" type="text" class="form-control size" placeholder="Libellé de la partie" maxlength="30" required>
-      </div>
-      <h4>Nom des joueurs</h4>
-      <div class="form-group mb-4">
-        <input [(ngModel)]="party.playersName[0]" name="player1Name" type="text" class="form-control mb-2" placeholder="Joueur 1" maxlength="30" required>
-        <input [(ngModel)]="party.playersName[1]" name="player2Name" type="text" class="form-control mb-2" placeholder="Joueur 2" maxlength="30" required>
-        <input [(ngModel)]="party.playersName[2]" name="player3Name" type="text" class="form-control mb-2" placeholder="Joueur 3" maxlength="30" required>
-        <input [(ngModel)]="party.playersName[3]" name="player4Name" type="text" class="form-control mb-2" placeholder="Joueur 4" maxlength="30" required>
-      </div>
-      <div class="d-flex flex-row justify-content-center">
-        <button class="btn btn-success w-50" type="submit" [disabled]="partyAddingForm.invalid">Ajouter la partie</button>
-        <button routerLink="" class="btn btn-warning w-50 ms-1">Annuler</button>
-      </div>
-    </fieldset>
-  </form>
+<h1 class="mb-3">NOUVELLE PARTIE</h1>
+<form #partyAddingForm="ngForm" (ngSubmit)="onSubmit(partyAddingForm)">
+  <fieldset>
+    <h4>Libellé de la partie</h4>
+    <div class="form-group mb-4">
+      <input [(ngModel)]="party.label" name="partieLabel" type="text" class="form-control size" placeholder="Libellé de la partie" maxlength="30" pattern="^([^ ]|([^ ].*[^ ]))$" required>
+    </div>
+    <h4>Nom des joueurs</h4>
+    <div class="form-group mb-4">
+      <input [(ngModel)]="party.playersName[0]" name="player1Name" type="text" class="form-control mb-2" placeholder="Joueur 1" maxlength="30" pattern="^([^ ]|([^ ].*[^ ]))$" required>
+      <input [(ngModel)]="party.playersName[1]" name="player2Name" type="text" class="form-control mb-2" placeholder="Joueur 2" maxlength="30" pattern="^([^ ]|([^ ].*[^ ]))$" required>
+      <input [(ngModel)]="party.playersName[2]" name="player3Name" type="text" class="form-control mb-2" placeholder="Joueur 3" maxlength="30" pattern="^([^ ]|([^ ].*[^ ]))$" required>
+      <input [(ngModel)]="party.playersName[3]" name="player4Name" type="text" class="form-control mb-2" placeholder="Joueur 4" maxlength="30" pattern="^([^ ]|([^ ].*[^ ]))$" required>
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+      <button class="btn btn-success w-50" type="submit" [disabled]="partyAddingForm.invalid">Ajouter la partie</button>
+      <button routerLink="" class="btn btn-warning w-50 ms-1">Annuler</button>
+    </div>
+  </fieldset>
+</form>
+
+<div class="alert alert2 alert-dismissible alert-danger fixed-top me-2 mt-2 ms-2">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  Une <strong>erreur</strong> s'est produite lors de l'ajout des données. Veuillez réessayer plus tard.
+</div>
+
+<div class="alert alert1 alert-dismissible alert-danger fixed-top me-2 mt-2 ms-2">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  Une <strong>erreur</strong> s'est produite lors de la récupération des données. Veuillez réessayer plus tard.
 </div>

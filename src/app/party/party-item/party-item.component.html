@@ -24,24 +24,9 @@
     {{ party.playersName[2] }} et
     {{ party.playersName[3] }}
   </h5>
-  <div class="d-flex flex-row flex-nowrap">
+  <div class="d-flex flex-row flex-nowrap ms-2">
     <button type="button" class="btn btn-primary" *ngIf="party.state == 0" routerLink="partie/{{ party.id }}">Continuer</button>
     <button type="button" class="btn btn-secondary" *ngIf="party.state == 1" routerLink="partie/{{ party.id }}">Consulter</button>
-    <button type="button" class="btn btn-warning ms-1" (click)="startRemovingDialog()">Supprimer</button>
-  </div>
-</div>
-
-<div class="modal" id="{{ party.id }}">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-body">
-        <h5>Êtes-vous certain(e) de vouloir supprimer cette partie ?</h5>
-        <label class="text-muted">Toutes les données seront définitivement perdues.</label>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" (click)="removeParty()">Supprimer</button>
-        <button type="button" class="btn btn-secondary" (click)="cancelRemovingDialog()" data-bs-dismiss="modal">Annuler</button>
-      </div>
-    </div>
+    <button type="button" class="btn btn-warning ms-1" (click)="callDialogInParent()">Supprimer</button>
   </div>
 </div>

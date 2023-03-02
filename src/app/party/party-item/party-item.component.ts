@@ -1,7 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Party } from 'src/app/resources/party';
 import { Tools } from 'src/app/resources/tools';
-import { PartyService } from 'src/app/services/party.service';
 
 
 @Component({
@@ -15,11 +14,11 @@ export class PartyItemComponent {
 
   @Input()
   public party: Party = new Party();
-  public latestTimeLabel: string = "";
 
-  constructor(
-    private partyService: PartyService,
-  ) {}
+  @Output()
+  public partyIDEvent = new EventEmitter<number>();
+
+  public latestTimeLabel: string = "";
 
   /**
    * Sets the label showing the latest time the party has been consulted.
@@ -31,31 +30,11 @@ export class PartyItemComponent {
   }
 
   /**
-   * Shows the dialog ensuring that a party might be removed.
+   * Calls the methode that shows the dialog which ensure that
+   *  a party might be removed in the parent component.
    */
-  public startRemovingDialog(): void {
-    // @ts-ignore
-    document.getElementById(this.party.id).style.display = "flex";
-  }
-
-  /**
-   * Hides the dialog ensuring that a party might be removed.
-   */
-  public cancelRemovingDialog(): void {
-    // @ts-ignore
-    document.getElementById(this.party.id).style.display = "none";
-  }
-
-  /**
-   * Calls the service function to remove the party from the JSON database.
-   */
-  public removeParty(): void {
-    this.partyService.removeParty(this.party.id).subscribe({
-      next: success => {
-        location.reload(); // refreshes the application to update its content
-      },
-      error: e => console.log("Error when deleting the data from the JSON database.") // TODO
-    });
+  callDialogInParent() {
+    this.partyIDEvent.emit(this.party.id);
   }
 
 }

@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Round } from "src/app/resources/round";
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Round } from 'src/app/resources/round';
 
 
 @Component({
@@ -13,30 +13,16 @@ export class RoundItemComponent {
 
   @Input()
   public round: Round = new Round();
-  public difference: number = 0;
+
+  @Output()
+  public roundNumberEvent = new EventEmitter<number>();
 
   /**
-   * Calculates the difference between the betting player's score
-   *  and the score corresponding to the number of oudlers given.
+   * Calls the methode that sets and shows the round
+   *  data dialog in the parent component.
    */
-  private ngOnInit(): void {
-    this.difference = this.round.bettingPlayerOriginalScore - [56, 51, 41, 36][this.round.nbOudlers];
-  }
-
-  /**
-   * Shows a dialog detailing all the round's data.
-   */
-  public startInfoDialog(): void {
-    // @ts-ignore
-    document.getElementById(this.round.number).style.display = "block";
-  }
-
-  /**
-   * Closes the dialog detailing all the round's data.
-   */
-  public closeInfoDialog(): void {
-    // @ts-ignore
-    document.getElementById(this.round.number).style.display = "none";
+  callDialogInParent() {
+    this.roundNumberEvent.emit(this.round.number);
   }
 
 }

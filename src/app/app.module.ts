@@ -12,6 +12,7 @@ import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { RoundContinuingComponent } from './round/round-continuing/round-continuing.component';
 import { RoundItemComponent } from './round/round-item/round-item.component';
+import { AboutComponent } from './about/about.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { RoundItemComponent } from './round/round-item/round-item.component';
     PartyItemComponent,
     PartyAddingComponent,
     RoundContinuingComponent,
-    RoundItemComponent
+    RoundItemComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

@@ -31,7 +31,11 @@ export class PartyAddingComponent {
         this.party.id = (parties.length > 0 ? parties[parties.length - 1].id + 1 : 0);
         this.party.label = "Partie n°" + (parties.length > 0 ? this.party.id : 1);
       },
-      error: e => console.log("Error when getting the data from the JSON database.") // TODO
+      error: e => {
+        console.log("Error when getting the data from the JSON database.");
+        // @ts-ignore
+        document.querySelector(".alert1").style.display = "block";
+      }
     });
   }
 
@@ -44,7 +48,11 @@ export class PartyAddingComponent {
       this.party.startingDate = Tools.getCurrentStringDate();
       this.partyService.addParty(this.party).subscribe({
         next: success => this.router.navigateByUrl("").then(() => location.reload()),
-        error: e => console.log("Error when adding the data to the database.") // TODO
+        error: e => {
+          console.log("Error when adding the data to the database.");
+          // @ts-ignore
+          document.querySelector(".alert2").style.display = "block";
+        }
       });
     }
   }

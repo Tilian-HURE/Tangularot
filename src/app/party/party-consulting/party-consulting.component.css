@@ -1,0 +1,23 @@
+.modal {
+  display:none;
+  backdrop-filter:brightness(50%);
+}
+
+.toast {
+  width:90%;
+  max-width:500px;
+  z-index: 999;
+  position:absolute;
+  top:50vh;
+  left:50vw;
+  transform:translate(-50%, -50%);
+}
+
+.toast li {
+  font-size:1.25rem;
+  white-space:nowrap;
+}
+
+.toast button {
+  background-size:85%;
+}

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { PartyService } from 'src/app/services/party.service';
 import { Party } from 'src/app/resources/party';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class HeaderComponent {
   public parties: Party[] = [];
 
   constructor(
-    private partyService: PartyService
+    private partyService: PartyService,
+    public router: Router
   ) {}
 
   /**
@@ -23,9 +25,18 @@ export class HeaderComponent {
    */
   private ngOnInit(): void {
     this.partyService.getParties().subscribe({
-      next: parties => this.parties = parties,
-      error: e => console.log("Error when getting the party from the JSON database.") // TODO
+      next: parties => this.parties = parties
     });
+  }
+
+  /**
+   * Refreshes the current page to load the party selected in the list of th parties.
+   * @param id: ID of the party to load
+   */
+  switchParty(id: number) {
+    this.router.navigateByUrl('').then(() =>
+      this.router.navigateByUrl('partie/'+id)
+    );
   }
 
 }

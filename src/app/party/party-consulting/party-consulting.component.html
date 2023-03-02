@@ -1,4 +1,4 @@
-<a routerLink="" class="d-block mb-3 fit" style="width:fit-content"><h5 class="mb-0"><< Retour</h5></a>
+<a routerLink="" class="d-block mb-3 fit text-decoration-none" style="width:fit-content"><h5 class="mb-0"><< Accueil</h5></a>
 
 <div class="d-flex flex-row align-items-end justify-content-between flex-wrap mb-4">
   <div>
@@ -21,7 +21,7 @@
   <button class="btn btn-lg btn-outline-primary text-nowrap mt-3" *ngIf="party.state == 0" type="button" routerLink="/partie/{{ party.id }}/continuer">Continuer la partie</button>
 </div>
 
-<h3 class="mb-1">MANCHES ET SCORES</h3>
+<h3 class="mb-2">MANCHES ET SCORES</h3>
 <div class="overflow-auto">
   <table class="table" *ngIf="party.rounds.length > 0; else showText">
     <thead>
@@ -35,10 +35,65 @@
     </tr>
     </thead>
     <tbody>
-      <tr app-round-item *ngFor="let round of rounds" [round]="round" class="text-center"></tr>
+      <tr app-round-item *ngFor="let round of rounds" [round]="round" (roundNumberEvent)="startInfoDialog($event)" class="text-center"></tr>
     </tbody>
   </table>
   <ng-template #showText>
     <h5 class="text-secondary">Aucune manche</h5>
   </ng-template>
+</div>
+
+<div class="modal">
+  <div class="toast show bg-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header p-3">
+      <div class="d-flex flex-row me-auto align-items-end">
+        <h5 class="mb-0"><strong>MANCHE n°{{ seeMoreRound.number }}</strong></h5>
+        <label class="ms-2">Date : <span class="text-muted">{{ seeMoreRound.date }}</span></label>
+      </div>
+      <button type="button" class="btn-close ms-1 me-1 mb-1" (click)="closeInfoDialog()">
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+    <div class="toast-body">
+      <ul class="list-group">
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Preneur
+          <span class="text-primary">{{ seeMoreRound.bettingPlayer.name }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Type de pari
+          <span class="text-primary" *ngIf="seeMoreRound.bet == 1">Petite</span>
+          <span class="text-primary" *ngIf="seeMoreRound.bet == 2">Garde</span>
+          <span class="text-primary overflow-auto ms-3" *ngIf="seeMoreRound.bet == 4">Garde sans le chien</span>
+          <span class="text-primary overflow-auto ms-3" *ngIf="seeMoreRound.bet == 6">Garde contre le chien</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Nombre de oudlers
+          <span class="badge bg-primary rounded-pill">{{ seeMoreRound.nbOudlers }}</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Score original
+          <span class="badge bg-primary rounded-pill">{{ seeMoreRound.bettingPlayerOriginalScore }} point(s)</span>
+        </li>
+        <li *ngIf="seeMoreRound.petitAuBout" class="list-group-item d-flex justify-content-between align-items-center">
+          Petit au bout
+          <span class="badge bg-success rounded-pill">Oui</span>
+        </li>
+        <li *ngIf="seeMoreRound.bonus > 0" class="list-group-item d-flex justify-content-between align-items-center">
+          Poignée
+          <span class="text-primary" *ngIf="seeMoreRound.bonus == 20">Simple</span>
+          <span class="text-primary" *ngIf="seeMoreRound.bonus == 30">Double</span>
+          <span class="text-primary" *ngIf="seeMoreRound.bonus == 40">Triple</span>
+        </li>
+        <li *ngIf="difference > 0" class="list-group-item d-flex justify-content-between align-items-center">
+          Victoire de
+          <span class="badge bg-success rounded-pill">{{ difference }} point(s)</span>
+        </li>
+        <li *ngIf="difference < 0" class="list-group-item d-flex justify-content-between align-items-center">
+          Défaite de
+          <span class="badge bg-danger rounded-pill">{{ -difference }} point(s)</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

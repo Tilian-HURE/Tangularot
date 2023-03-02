@@ -116,60 +116,149 @@
       ]
     },
     {
+      "id": 3,
+      "state": 0,
+      "label": "Exemple1",
+      "startingDate": "02/03/2023 18:13",
+      "endingDate": null,
+      "playersName": [
+        "J1",
+        "x",
+        "x",
+        "x"
+      ],
+      "rounds": [
+        {
+          "number": 1,
+          "date": "02/03/2023 18:17",
+          "bettingPlayer": {
+            "index": "0",
+            "name": "J1"
+          },
+          "bet": "2",
+          "nbOudlers": "2",
+          "petitAuBout": false,
+          "bonus": 0,
+          "bettingPlayerOriginalScore": "48",
+          "scores": [
+            192,
+            -64,
+            -64,
+            -64
+          ],
+          "previousRoundScores": [
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "number": 2,
+          "date": "02/03/2023 19:51",
+          "bettingPlayer": {
+            "index": "1",
+            "name": "x"
+          },
+          "bet": "4",
+          "nbOudlers": "1",
+          "petitAuBout": false,
+          "bonus": 0,
+          "bettingPlayerOriginalScore": "42",
+          "scores": [
+            328,
+            -472,
+            72,
+            72
+          ],
+          "previousRoundScores": [
+            192,
+            -64,
+            -64,
+            -64
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "state": 0,
+      "label": "Exemple2",
+      "startingDate": "02/03/2023 18:17",
+      "endingDate": null,
+      "playersName": [
+        "J1",
+        "x",
+        "x",
+        "x"
+      ],
+      "rounds": [
+        {
+          "number": 1,
+          "date": "02/03/2023 18:18",
+          "bettingPlayer": {
+            "index": "0",
+            "name": "J1"
+          },
+          "bet": "2",
+          "nbOudlers": "1",
+          "petitAuBout": false,
+          "bonus": "20",
+          "bettingPlayerOriginalScore": "48",
+          "scores": [
+            -228,
+            76,
+            76,
+            76
+          ],
+          "previousRoundScores": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
       "id": 5,
       "state": 0,
-      "label": "Partie n°5",
-      "startingDate": "01/03/2023 16:22",
+      "label": "Exemple3",
+      "startingDate": "02/03/2023 18:18",
       "endingDate": null,
       "playersName": [
-        "1",
-        "45",
-        "7",
-        "5"
+        "x",
+        "J2",
+        "x",
+        "x"
       ],
-      "rounds": []
-    },
-    {
-      "id": 6,
-      "state": 0,
-      "label": "Partie n°6",
-      "startingDate": "01/03/2023 16:28",
-      "endingDate": null,
-      "playersName": [
-        "1",
-        "2",
-        "4",
-        "5"
-      ],
-      "rounds": []
-    },
-    {
-      "id": 7,
-      "state": 0,
-      "label": "Partie n°7",
-      "startingDate": "01/03/2023 16:28",
-      "endingDate": null,
-      "playersName": [
-        "8",
-        "54",
-        "25",
-        "5"
-      ],
-      "rounds": []
-    },
-    {
-      "id": 8,
-      "state": 0,
-      "label": "Partie n°8",
-      "startingDate": "01/03/2023 16:28",
-      "endingDate": null,
-      "playersName": [
-        "4",
-        "4",
-        "4",
-        "4"
-      ],
-      "rounds": []
+      "rounds": [
+        {
+          "number": 1,
+          "date": "02/03/2023 18:19",
+          "bettingPlayer": {
+            "index": "1",
+            "name": "J2"
+          },
+          "bet": "4",
+          "nbOudlers": "3",
+          "petitAuBout": true,
+          "bonus": "30",
+          "bettingPlayerOriginalScore": "44",
+          "scores": [
+            -202,
+            606,
+            -202,
+            -202
+          ],
+          "previousRoundScores": [
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
     }
   ]
 }

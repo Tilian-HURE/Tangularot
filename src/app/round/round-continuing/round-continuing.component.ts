@@ -87,7 +87,11 @@ export class RoundContinuingComponent {
       }
       this.partyService.updateParty(partyID, this.party).subscribe({
         next: success => this.router.navigateByUrl("/partie/" + partyID),
-        error: e => console.log("Error when updating the data in the database.") // TODO
+        error: e => {
+          console.log("Error when updating the data in the database.");
+          // @ts-ignore
+          document.querySelector(".alert").style.display = "block";
+        }
       });
     }
   }

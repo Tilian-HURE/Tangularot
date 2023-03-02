@@ -14,32 +14,9 @@ td > div > h4 {
 }
 
 td > div > label {
-  margin-left:0.25rem;
+  font-size:1rem;
 }
 
 td button {
   max-width:170px;
-}
-
-.modal {
-  display:none;
-  backdrop-filter:brightness(50%);
-}
-
-.toast {
-  width:90%;
-  max-width:500px;
-  z-index: 999;
-  position:absolute;
-  top:50vh;
-  left:50vw;
-  transform:translate(-50%, -50%);
-}
-
-.toast li {
-  font-size:1.25rem;
-}
-
-.toast button {
-  background-size:85%;
 }

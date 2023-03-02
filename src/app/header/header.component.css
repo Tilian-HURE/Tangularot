@@ -1,0 +1,11 @@
+img {
+  width:calc(var(--bs-navbar-brand-font-size) * 1.6 );
+}
+
+a {
+  font-size:1.2rem;
+}
+
+a:hover {
+  cursor:pointer;
+}
