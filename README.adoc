@@ -29,3 +29,7 @@ _Les étapes d'<<installation, installation>> doivent avoir été suivies dans l
 . Se placer dans le repertoire `Tangularot`, ouvrir un terminal et lancer le serveur de la base de données JSON (http://localhost:3000/) avec la commande `npm start`
 . Lancer le serveur de l'application avec la commande `ng serve`
 . L'application est correctement lancée et accessible depuis http://localhost:4200/
+
+{empty} +
+
+Voir plus de détails techniques dans le https://github.com/Tilian-HURE/Tangularot/blob/main/Dossier_de_conception.adoc[dossier de conception] de l'application.
