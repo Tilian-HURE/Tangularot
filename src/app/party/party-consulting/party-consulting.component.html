@@ -2,10 +2,10 @@
 
 <div class="d-flex flex-row align-items-end justify-content-between flex-wrap mb-4">
   <div>
-    <div class="d-flex align-items-end">
+    <div class="d-flex align-items-center">
       <h2 class="mb-0">{{ party.label }}</h2>
-      <h5 class="text-primary mb-1 ms-2" *ngIf="party.state == 0">EN COURS</h5>
-      <h5 class="text-muted mb-1 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
+      <h5 class="text-primary mb-0 ms-2" *ngIf="party.state == 0">EN COUR</h5>
+      <h5 class="text-muted mb-0 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
     </div>
     <div class="d-flex flex-row flex-wrap">
       <h5 class="mb-0">
@@ -46,8 +46,8 @@
 <div class="modal">
   <div class="toast show bg-white" role="alert" aria-live="assertive" aria-atomic="true">
     <div class="toast-header p-3">
-      <div class="d-flex flex-row me-auto align-items-end">
-        <h5 class="mb-0"><strong>MANCHE n°{{ seeMoreRound.number }}</strong></h5>
+      <div class="d-flex flex-row me-auto align-items-end text-nowrap overflow-auto">
+        <h5 class="mb-0"><strong>MANCHE N°{{ seeMoreRound.number }}</strong></h5>
         <label class="ms-2">Date : <span class="text-muted">{{ seeMoreRound.date }}</span></label>
       </div>
       <button type="button" class="btn-close ms-1 me-1 mb-1" (click)="closeInfoDialog()">
@@ -64,8 +64,8 @@
           Type de pari
           <span class="text-primary" *ngIf="seeMoreRound.bet == 1">Petite</span>
           <span class="text-primary" *ngIf="seeMoreRound.bet == 2">Garde</span>
-          <span class="text-primary overflow-auto ms-3" *ngIf="seeMoreRound.bet == 4">Garde sans le chien</span>
-          <span class="text-primary overflow-auto ms-3" *ngIf="seeMoreRound.bet == 6">Garde contre le chien</span>
+          <span class="text-primary" *ngIf="seeMoreRound.bet == 4">Garde sans le chien</span>
+          <span class="text-primary" *ngIf="seeMoreRound.bet == 6">Garde contre le chien</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Nombre de oudlers
@@ -92,6 +92,10 @@
         <li *ngIf="difference < 0" class="list-group-item d-flex justify-content-between align-items-center">
           Défaite de
           <span class="badge bg-danger rounded-pill">{{ -difference }} point(s)</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          Score total
+          <span class="badge bg-primary rounded-pill">{{ (seeMoreRound.scores[seeMoreRound.bettingPlayer.index]-seeMoreRound.previousRoundScores[seeMoreRound.bettingPlayer.index])/3 }} point(s)</span>
         </li>
       </ul>
     </div>

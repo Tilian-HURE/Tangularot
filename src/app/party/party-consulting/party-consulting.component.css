@@ -18,6 +18,11 @@
   white-space:nowrap;
 }
 
+.toast li > span {
+  overflow:auto;
+  margin-left:1rem;
+}
+
 .toast button {
   background-size:85%;
 }
