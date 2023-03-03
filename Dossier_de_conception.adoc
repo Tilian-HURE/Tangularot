@@ -2,7 +2,7 @@
 :toc:
 :toc-title: Sommaire
 
-Tilian HURÉ (2A)
+*Tilian HURÉ (2A)*
 
 {empty} +
 
