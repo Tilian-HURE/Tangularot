@@ -46,7 +46,6 @@ export class RoundContinuingComponent {
         for (let i=0; i < 4; i++) { // default betting player
           if (!this.playersWhoBet[i]) {
             this.round.bettingPlayer = {"index":i, "name":this.party.playersName[i]};
-            console.log(this.round.bettingPlayer);
           }
         }
       },
