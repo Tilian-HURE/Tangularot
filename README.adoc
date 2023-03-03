@@ -10,10 +10,12 @@ Développé par Tilian HURÉ
 
 pass:[*] Voir https://github.com/angular/angular-cli[Angular CLI] (version 15.1.1)
 
+*Voir plus de détails techniques dans le https://github.com/Tilian-HURE/Tangularot/blob/main/Dossier_de_conception.adoc[dossier de conception] de l'application.*
+
 {empty} +
 
 == Installation [[installation]]
-_Suivre toutes les étapes afin d'installer correctement l'application et ses dépendances._
+[.underline]#Suivre toutes les étapes afin d'installer correctement l'application et ses dépendances.#
 
 . Télécharger l'application (en `.zip` ou par clonage) depuis son https://github.com/Tilian-HURE/Tangularot[dépôt GitHub]
 . Installer la dernière version de https://nodejs.org/[NodeJS] sur le poste concerné
@@ -24,12 +26,8 @@ _Suivre toutes les étapes afin d'installer correctement l'application et ses d�
 {empty} +
 
 == Lancement
-_Les étapes d'<<installation, installation>> doivent avoir été suivies dans leur globalité pour lancer correctement l'application._
+[.underline]#Les étapes d'<<installation, installation>> doivent avoir été suivies dans leur globalité pour lancer correctement l'application.#
 
 . Se placer dans le repertoire `Tangularot`, ouvrir un terminal et lancer le serveur de la base de données JSON (http://localhost:3000/) avec la commande `npm start`
 . Lancer le serveur de l'application avec la commande `ng serve`
-. L'application est correctement lancée et accessible depuis http://localhost:4200/
-
-{empty} +
-
-Voir plus de détails techniques dans le https://github.com/Tilian-HURE/Tangularot/blob/main/Dossier_de_conception.adoc[dossier de conception] de l'application.
+. L'application est correctement lancée et est accessible depuis http://localhost:4200/
