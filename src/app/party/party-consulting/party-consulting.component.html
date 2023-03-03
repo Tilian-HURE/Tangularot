@@ -2,10 +2,10 @@
 
 <div class="d-flex flex-row align-items-end justify-content-between flex-wrap mb-4">
   <div>
-    <div class="d-flex align-items-center">
+    <div class="d-flex align-items-end">
       <h2 class="mb-0">{{ party.label }}</h2>
-      <h5 class="text-primary mb-0 ms-2" *ngIf="party.state == 0">EN COURS</h5>
-      <h5 class="text-muted mb-0 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
+      <h5 class="text-primary mb-1 ms-2" *ngIf="party.state == 0">EN COURS <span class="text-dark">({{ party.rounds.length }}/4)</span></h5>
+      <h5 class="text-muted mb-1 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
     </div>
     <div class="d-flex flex-row flex-wrap">
       <h5 class="mb-0">

@@ -2,23 +2,13 @@
 <form #roundContinuingForm="ngForm" (ngSubmit)="onSubmit(roundContinuingForm)">
   <fieldset>
     <div class="form-group mb-4">
-      <h4>Preneur</h4>
-      <div class="form-check" *ngIf="!playersWhoBet[0]">
-        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" value="0" required>
-        <h4 class="form-check-label">{{ party.playersName[0] }}</h4>
-      </div>
-      <div class="form-check" *ngIf="!playersWhoBet[1]">
-        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" value="1">
-        <h4 class="form-check-label">{{ party.playersName[1] }}</h4>
-      </div>
-      <div class="form-check" *ngIf="!playersWhoBet[2]">
-        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" value="2">
-        <h4 class="form-check-label">{{ party.playersName[2] }}</h4>
-      </div>
-      <div class="form-check" *ngIf="!playersWhoBet[3]">
-        <input [(ngModel)]="round.bettingPlayer.index" class="form-check-input" type="radio" name="bettingPlayerRB" value="3">
-        <h4 class="form-check-label">{{ party.playersName[3] }}</h4>
-      </div>
+      <h4 class="form-label">Preneur</h4>
+      <select [(ngModel)]="round.bettingPlayer.index" class="form-select" name="bettingPlayerSelect" required>
+        <option value="0" *ngIf="!playersWhoBet[0]">{{ party.playersName[0] }}</option>
+        <option value="1" *ngIf="!playersWhoBet[1]">{{ party.playersName[1] }}</option>
+        <option value="2" *ngIf="!playersWhoBet[2]">{{ party.playersName[2] }}</option>
+        <option value="3" *ngIf="!playersWhoBet[3]">{{ party.playersName[3] }}</option>
+      </select>
     </div>
     <div class="form-group mb-4">
       <h4 class="form-label">Type de pari</h4>

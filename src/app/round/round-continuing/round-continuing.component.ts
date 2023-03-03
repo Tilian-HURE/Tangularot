@@ -36,10 +36,19 @@ export class RoundContinuingComponent {
     this.partyService.getParty(partyID).subscribe({
       next: party => {
         this.party = party;
+        if (this.party.state == PartyState.DONE) {
+          this.router.navigateByUrl("partie/"+this.party.id);
+        }
         this.round.number = this.party.rounds.length + 1;
         this.party.rounds.forEach((round: Round) => {
           this.playersWhoBet[round.bettingPlayer.index] = true;
         })
+        for (let i=0; i < 4; i++) { // default betting player
+          if (!this.playersWhoBet[i]) {
+            this.round.bettingPlayer = {"index":i, "name":this.party.playersName[i]};
+            console.log(this.round.bettingPlayer);
+          }
+        }
       },
       error: e => this.router.navigateByUrl("")
     });
@@ -86,7 +95,7 @@ export class RoundContinuingComponent {
         this.party.endingDate = this.round.date;
       }
       this.partyService.updateParty(partyID, this.party).subscribe({
-        next: success => this.router.navigateByUrl("/partie/" + partyID),
+        next: success => this.router.navigateByUrl("/partie/"+partyID),
         error: e => {
           console.log("Error when updating the data in the database.");
           // @ts-ignore

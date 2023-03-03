@@ -1,9 +1,9 @@
 <div class="mb-2">
   <div class="d-flex w-100 justify-content-between align-items-center">
-    <div class="d-flex align-items-center">
-      <h2 class="mb-0">{{ party.label }}</h2>
-      <h5 class="text-primary mb-0 ms-2" *ngIf="party.state == 0">EN COURS</h5>
-      <h5 class="text-muted mb-0 ms-2" *ngIf="party.state == 1">TERMINÉE</h5>
+    <div class="d-flex align-items-end flex-wrap">
+      <h2 class="mb-0 me-2">{{ party.label }}</h2>
+      <h5 class="text-primary mb-1" *ngIf="party.state == 0">EN COURS <span class="text-dark">({{ party.rounds.length }}/4)</span></h5>
+      <h5 class="text-muted mb-1" *ngIf="party.state == 1">TERMINÉE</h5>
     </div>
     <label class="text-muted">{{ latestTimeLabel }}</label>
   </div>
