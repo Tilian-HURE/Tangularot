@@ -1,0 +1,27 @@
+= Dossier de conception de Tangularot
+:toc:
+:toc-title: Sommaire
+
+Tilian HURÉ (2A)
+
+{empty} +
+
+== 1) Tangularot
+
+== 2) Installation et lancement
+
+== 3) Composants
+=== 3.1) Arborescence
+=== 3.2) Composants de base
+=== 3.3) Classes
+=== 3.4) Service et base de données JSON
+
+== 4) Routes
+=== 4.1) Liste des routes
+=== 4.2) Diagramme de passage
+
+== 5) Fonctionnalités
+=== 5.1) Fonctionnalités minimales
+=== 5.2) Fonctionnalités bonus
+==== A) Utilisation
+==== B) Composants et méthodes concernés

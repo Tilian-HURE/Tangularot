@@ -1,0 +1,31 @@
+= Guide d'installation et de lancement de l'application Tangularot
+
+Développé par Tilian HURÉ
+
+{empty} +
+
+== Tangularot
+[.text-justify]
+*Tangularot* est une application réalisée entièrement avec https://angular.io/[Angular]* et permettant aux adeptes du jeu de cartes https://www.le-tarot.fr/[Tarot] de compter facilement les points obtenus le long de leurs parties.
+
+pass:[*] Voir https://github.com/angular/angular-cli[Angular CLI] (version 15.1.1)
+
+{empty} +
+
+== Installation [[installation]]
+_Suivre toutes les étapes afin d'installer correctement l'application et ses dépendances._
+
+. Télécharger l'application (en `.zip` ou par clonage) depuis son https://github.com/Tilian-HURE/Tangularot[dépôt GitHub]
+. Installer la dernière version de https://nodejs.org/[NodeJS] sur le poste concerné
+. Se placer dans le repertoire `Tangularot`, ouvrir un terminal et installer la dernière version d'Angular avec la commande `npm install -g @angular/cli`
+. Installer toutes les dépendances nécessaires au fonctionnement de l'application avec la commande `npm install`
+. L'application est entièrement installée et est prête à être lancée
+
+{empty} +
+
+== Lancement
+_Les étapes d'<<installation, installation>> doivent avoir été suivies dans leur globalité pour lancer correctement l'application._
+
+. Se placer dans le repertoire `Tangularot`, ouvrir un terminal et lancer le serveur de la base de données JSON (http://localhost:3000/) avec la commande `npm start`
+. Lancer le serveur de l'application avec la commande `ng serve`
+. L'application est correctement lancée et accessible depuis http://localhost:4200/
