@@ -10,7 +10,7 @@ Développé par Tilian HURÉ
 
 pass:[*] Voir https://github.com/angular/angular-cli[Angular CLI] (version 15.1.1)
 
-*Voir plus de détails techniques dans le https://github.com/Tilian-HURE/Tangularot/blob/main/Dossier_de_conception.adoc[dossier de conception] de l'application.*
+*Voir plus de détails techniques dans le https://github.com/Tilian-HURE/Tangularot/blob/main/DOSSIER_DE_CONCEPTION.adoc[dossier de conception] de l'application.*
 
 {empty} +
 
