@@ -42,7 +42,7 @@ export class IndexComponent {
       error: e => {
         console.log("Error when getting the party from the JSON database.");
         // @ts-ignore
-        document.querySelector(".alert").style.display = "block";
+        document.querySelector(".alert1").style.display = "block";
       }
     });
   }
@@ -73,7 +73,11 @@ export class IndexComponent {
       next: success => {
         location.reload(); // refreshes the application to update its content
       },
-      error: e => console.log("Error when deleting the data from the JSON database.") // TODO
+      error: e => {
+        console.log("Error when deleting the data from the JSON database.");
+        // @ts-ignore
+        document.querySelector(".alert2").style.display = "block";
+      }
     });
   }
 
