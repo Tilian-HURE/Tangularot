@@ -280,7 +280,7 @@ image::src/assets/images/dossier_de_conception/fonc8.png[,725]
 
 ==== 5.2.5) Page "à propos"
 [.text-justify]
-Accessible depuis l'en-tête de l'application en cliquant sur le lien "À PROPOS", une page du même nom a été ajouté afin de renseigner quelques détails sur l'application et son contexte.
+Accessible depuis l'en-tête de l'application en cliquant sur le lien "À PROPOS", une page du même nom a été ajoutée afin de renseigner quelques détails sur l'application et son contexte.
 
 image::src/assets/images/dossier_de_conception/fonc9.png[,725]
 
